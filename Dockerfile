@@ -1,35 +1,35 @@
-# Stage 1: Build React app (frontend)
+# Stage 1: Build React app (client)
 FROM node:16 as build-stage
 
-# Set working directory
+# Set working directory for the build stage
 WORKDIR /app
 
-# Copy the frontend package.json and package-lock.json files and install dependencies
+# Copy and install client dependencies
 COPY client/package*.json ./client/
 RUN cd client && npm install
 
-# Copy the rest of the frontend files and build the React app
+# Copy all client files and build the React app
 COPY client/ ./client/
 RUN cd client && npm run build
 
-# Stage 2: Set up Node.js server (backend)
+# Stage 2: Setup Node.js server (server)
 FROM node:16 as production-stage
 
-# Set working directory for backend
+# Set working directory for the backend
 WORKDIR /app
 
-# Copy the backend package.json and package-lock.json files and install dependencies
+# Copy and install server dependencies
 COPY server/package*.json ./server/
 RUN cd server && npm install
 
-# Copy the React build from the first stage
+# Copy the React build from Stage 1 to the server
 COPY --from=build-stage /app/client/build ./server/client/build
 
-# Copy the rest of the backend files
+# Copy the remaining server files
 COPY server/ ./server/
 
-# Expose the port that your server will run on
+# Expose the port that your server is running on
 EXPOSE 5000
 
-# Start the server
+# Start the Node.js server
 CMD ["npm", "start", "--prefix", "server"]

@@ -1,7 +1,7 @@
 # Stage 1: Build React app (client)
 FROM node:16 as build-stage
 
-# Set working directory for the build stage
+
 WORKDIR /app
 
 # Copy and install client dependencies
@@ -15,7 +15,7 @@ RUN cd client && npm run build
 # Stage 2: Setup Node.js server (server)
 FROM node:16 as production-stage
 
-# Set working directory for the backend
+
 WORKDIR /app
 
 # Copy and install server dependencies
@@ -28,8 +28,8 @@ COPY --from=build-stage /app/client/build ./server/client/build
 # Copy the remaining server files
 COPY server/ ./server/
 
-# Expose the port that your server is running on
+
 EXPOSE 5000
 
-# Start the Node.js server
+
 CMD ["npm", "start", "--prefix", "server"]

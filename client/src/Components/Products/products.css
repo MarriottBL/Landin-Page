@@ -1,0 +1,128 @@
+.products-gallery {
+  display: grid;
+  grid-template-columns: repeat(22, 2fr);
+  grid-auto-rows: 100px; /* Set default row height */
+  gap: 20px; /* Spacing between images */
+  max-width: 650px; /* Adjust max-width to better fit two-column layout */
+  margin: 0 auto; /* Center the gallery on the page */
+  padding: 20px; /* Padding around the gallery */
+}
+
+/* Individual product image container */
+.img {
+  position: relative; /* Allow for better control over image positioning */
+  overflow: hidden; /* Ensures images fit nicely in their containers */
+}
+
+/* Styling for the images */
+.img img {
+  width: 100%;
+  height: 100%; /* Keep the aspect ratio */
+  object-fit: cover; /* Ensure images fit nicely in their container */
+  display: block;
+  border-radius: 10px; /* Add slight rounding to the corners */
+}
+
+/* Specific classes for different sizes for each img */
+.img-1 {
+  grid-column: span 11;
+  grid-row: span 2;
+}
+
+.img-2 {
+  grid-column: span 11;
+  grid-row: span 3;
+}
+
+.img-3 {
+  grid-column: span 11;
+  grid-row: span 3;
+}
+
+.img-4 {
+  grid-column: span 11;
+  grid-row: span 3;
+}
+
+.img-5 {
+  grid-column: span 11;
+  grid-row: span 3;
+}
+
+.img-6 {
+  grid-column: span 11;
+  grid-row: span 2;
+}
+
+.img-7 {
+  grid-column: span 22;
+  grid-row: span 3;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .products-gallery {
+    grid-template-columns: repeat(2, 1fr); /* 2 images per row on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .products-gallery {
+    grid-template-columns: 1fr; /* 1 image per row on mobile */
+  }
+}
+
+/* Flip Effect */
+
+.product-card {
+  perspective: 1000px; /* Perspective for 3D effect */
+}
+.product-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.product-card:hover .product-card-inner {
+  transform: rotateY(180deg); /* Flip effect on hover */
+}
+
+/* Front and back face of the card */
+.product-card-front, .product-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hides the back face when not visible */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden;
+}
+
+/* Styling for the front side of the card */
+.product-card-front {
+  background-size: cover;
+  background-position: center;
+}
+
+/* Styling for the back side of the card */
+.product-card-back {
+  background-color: #ffecb3; /* Light color for the back side */
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg); /* Flips the back side */
+  padding: 10px;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+/* fall back image */
+.product-card-front {
+  background-size: cover;
+  background-position: center;
+  background-color: #f0f0f0; /* Fallback background color */
+}

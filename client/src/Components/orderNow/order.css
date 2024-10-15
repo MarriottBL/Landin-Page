@@ -1,0 +1,117 @@
+    .order-now-btn {
+        padding: 10px 20px;
+        background-color: #28a745; /* Green color to match the theme */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .order-now-btn:hover {
+        background-color: #218838; /* Slightly darker green on hover */
+    }
+
+
+    /* Custom dialog styles using Material-UI default class */
+    .MuiDialog-root .MuiDialog-paper {
+        background: linear-gradient(135deg, #fff7e6, #ffecb3); /* Light yellow to pale gold gradient */
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        padding: 20px;
+        width: 100%;
+        max-width: 500px; /* Slightly wider to accommodate content */
+        position: relative;
+    }
+
+    /* .modal-title {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+    } */
+
+    .modal-content {
+        font-size: 18px;
+        color: #ff6f00; /* Bright orange for emphasis */
+        text-align: center;
+        margin: 15px 0 25px 0;
+        font-weight: bold;
+    }
+
+    .modal-actions {
+        display: flex;
+        justify-content: space-around; /* Space between buttons */
+        padding: 15px 0;
+    }
+
+    .messenger-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 20px;
+        border: none;
+        text-transform: uppercase;
+        font-size: 14px;
+        cursor: pointer;
+        width: 140px; /* Unified button size */
+        height: 80px;  /*for consistent sizing */
+        transition: all 0.3s ease;
+        text-align: center;
+        border-radius: 8px;
+        margin: 5px 10px; /* Adjusted spacing between buttons */
+    }
+
+    /* Facebook button styling */
+    .messenger-btn.facebook {
+        background-color: #1877f2; /* Facebook Blue */
+        color: white;
+    }
+
+    .messenger-btn.facebook:hover {
+        background-color: #155db2; /* Darker blue on hover */
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Instagram button styling */
+    .messenger-btn.instagram {
+        background-color: #e1306c; /* Instagram Pink */
+        color: white;
+    }
+
+    .messenger-btn.instagram:hover {
+        background-color: #b32455; /* Darker pink on hover */
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Email button styling */
+    .messenger-btn.email {
+        background-color: #ff6f00; /* Bright orange */
+        color: white;
+    }
+
+    .messenger-btn.email:hover {
+        background-color: #e65c00; /* Darker orange on hover */
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Close button styling */
+    .close-button, .MuiIconButton-root {
+        color: #c50505; /* Gray color for a softer look */
+        transition: color 0.3s ease;
+    }
+
+    .close-button:hover, .MuiIconButton-root:hover {
+        color: #ff000d; /* Bright orange hover effect */
+    }
+
+    /* Icon styling */
+    .messenger-btn svg {
+        font-size: 28px; /* Adjusted icon size */
+        margin-bottom: 3px; /* Space between icon and text */
+    }

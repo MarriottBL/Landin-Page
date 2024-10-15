@@ -1,0 +1,144 @@
+    .header-background {
+        background: linear-gradient(to bottom, #001831 70%, #e8b634 100%); /* or use your background image */
+        width: 100vw;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .overlapping-box {
+        position: absolute;
+        top: 120px; /* Adjust this to control how much the box overlaps */
+        left: 50%;
+        transform: translateX(-50%); /* Centers the box horizontally */
+        width: 80%; /* Adjust the width to control how wide the box is */
+        background-color: #fff; /* White background for contrast */
+        padding: 20px;
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Optional shadow to make it pop */
+        z-index: 10; /* Higher z-index to overlap the header */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Profile image wrapper to handle overlap */
+    .profile-image-wrapper {
+        position: absolute;
+        top: -90px; /* Adjust to overlap */
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        width: 180px;
+        height: 180px;
+        overflow: hidden;
+        border: 0px solid #fff;
+        background-color: #fff;
+        z-index: 20;
+    }
+
+    /* Top-right section (social media + registration) */
+    .top-right-section {
+        position: absolute;
+        top: 15px; /* Distance from the top */
+        right: 200px; /* Distance from the right */
+        display: flex;
+        align-items: center;
+        z-index: 15; /* Ensure this stays above header but below modal */
+    }
+    
+    /* Social media icons */
+    .social-media-icons a {
+        color: #2a86aa;
+        margin: 0 10px;
+        font-size: 15px;
+        text-decoration: none;
+    }
+    
+    .social-media-icons a:hover {
+        color: #54c2ee; /* Hover color */
+        transition: color 0.3s ease;
+    }
+
+    .fa-instagram{
+        width: 22px;
+    }
+
+    .fa-facebook{
+        width: 18px;
+    }
+    
+    /* Registration link */
+    .registration-link {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        padding: 10px 10px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+    
+    .register-icon {
+        width: 15px; /* Adjust icon size as needed */
+        margin-right: 1px; /* Space between icon and text */
+    }
+
+    /* Ensures the profile image fits well */
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* Center text styling */
+    .profile-content {
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    .profile-content h2 {
+        margin: 10px 0;
+        font-family: Montserrat;
+    }
+
+    .profile-content h4 {
+        margin: 5px 0;
+        font-size: 17px;
+        color: #777;
+    }
+
+    .profile-content p {
+        margin: 15px auto;
+        max-width: 500px;
+        color: #666;
+        font-size: 15px;
+        font-family: 'sans-serif';
+    }
+
+    .profile-content a {
+        margin: 0 10px;
+        color: #2a86aa;
+        text-decoration: none;
+    }
+
+    .profile-content a:hover {
+        color: #f2fc9d; /* Add a hover effect */
+    }
+
+    /* Add a smooth transition to the tab content */
+    .tab-content {
+        opacity: 0; /* Start hidden */
+        transition: opacity 1.0s ease-in-out; /* Smooth fade transition */
+        display: none; /* Initially hide all content */
+    }
+
+    /* Active tab content styling */
+    .tab-content.active {
+        opacity: 1; /* Fully visible */
+        display: block; /* Show the active tab content */
+    }
+

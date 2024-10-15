@@ -1,0 +1,95 @@
+/* Calendar Wrapper */
+    .rbc-calendar {
+        background-color: #fff;
+        border: 1px solid #f3f3f3;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        font-family: 'Arial', sans-serif;
+        width: 100%; /* Set width to 100% to make it responsive */
+        max-width: 1200px; /* Increase maximum width */
+        height: 600px; /* Allow height to auto-adjust */
+        width: 800px;
+        margin: 0 auto; /* Center align the calendar */
+    }
+    
+    /* Header - Back and Next Buttons */
+    .rbc-toolbar button {
+        background-color: #001831;
+        border: none;
+        padding: 10px 15px;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 10px;
+    }
+    
+    .rbc-toolbar button:hover {
+        background-color: #fffd7e;
+    }
+    
+    .rbc-toolbar span {
+        font-size: 2.5em;
+        color: #333333;
+    }
+    
+    /* Calendar Cells */
+    .rbc-month-view {
+        background-color: #f5f5f5;
+        font-size: 0.9em
+    }
+    
+    .rbc-day-bg {
+        background-color: #dddddd;
+        border: 1px solid #cfcfcf
+    }
+    
+    .rbc-off-range-bg {
+        background-color: #fafafa;
+    }
+    
+    .rbc-today {
+        background-color: #ffe680; /* Highlight current day */
+        color: #fff;
+    }
+    
+    .rbc-day-bg:hover {
+        background-color: #ffe680; /* Slight hover effect on day cells */
+    }
+    
+    /* Event Style */
+    .rbc-event {
+        background-color: #001831; /* Set a consistent background color */
+        color: #fff; /* White text color */
+        padding: 5px;
+        border-radius: 5px; /* Rounded corners for a modern look */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 5px; /* Add space between events */
+        font-size: 0.7em; /* Slightly smaller text for titles */
+        transition: all 0.3s ease-in-out; /* Add a hover transition effect */
+    }
+
+    .rbc-event:hover {
+        background-color: #001831; /* Darken the background color on hover */
+        color: #fff; /* Change text color to match the site theme */
+        transform: scale(2.00); /* Slight zoom effect on hover */
+    }
+
+    /* Calendar Day/Month Labels */
+    .rbc-header {
+        padding: 10px;
+        background-color: #001831; /* Header color */
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid #2a86aa;
+    }
+
+    
+    @media (max-width: 768px) {
+        .rbc-calendar {
+          max-width: 100%; /* Full width on smaller screens */
+        }
+    }

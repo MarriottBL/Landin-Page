@@ -1,0 +1,69 @@
+/* Modal Styles */
+.dialog-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+.dialog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #006699; /* Vibrant color for title */
+    margin-bottom: 15px;
+}
+
+.dialog-content p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333333;
+}
+
+.dialog-content p span {
+    font-weight: bold;
+    color: #ff9900; /* Accent color for important text */
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.dialog-actions button {
+    background-color: #006699; /* Match with title */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dialog-actions button:hover {
+    background-color: #004466; /* Darken on hover */
+}
+
+.dialog-actions button:focus {
+    outline: none;
+}
+
+/* Animation for Modal */
+.dialog-container {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

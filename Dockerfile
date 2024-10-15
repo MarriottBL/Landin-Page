@@ -19,14 +19,14 @@ FROM node:16 as production-stage
 WORKDIR /app
 
 # Copy and install server dependencies
-COPY server/package*.json ./server/
+COPY server/package*.json ./Server/
 RUN cd server && npm install
 
 # Copy the React build from Stage 1 to the server
-COPY --from=build-stage /app/client/build ./server/client/build
+COPY --from=build-stage /app/client/build ./Server/client/build
 
 # Copy the remaining server files
-COPY server/ ./server/
+COPY Server/ ./Server/
 
 # Expose the port that your server is running on
 EXPOSE 5000

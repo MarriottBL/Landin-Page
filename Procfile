@@ -1,1 +1,1 @@
-web: cd client && npm install && npm run build && cd ../server && npm install && npm start
+web: npm install --prefix client && npm run build --prefix client && npm install --prefix server && npm start --prefix server

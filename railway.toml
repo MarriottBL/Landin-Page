@@ -1,2 +1,3 @@
 [build]
 compose = "docker-compose.yml"
+useDocker = true

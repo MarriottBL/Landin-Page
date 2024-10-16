@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build:
+      context: ./client   # Path to the frontend directory
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+
+  backend:
+    build:
+      context: ./Server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"

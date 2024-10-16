@@ -1,14 +1,19 @@
+version: '3'
 services:
   frontend:
     build:
       context: ./client   # Path to the frontend directory
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:3000"  # Expose frontend on port 3000
+    environment:
+      - REACT_APP_API_URL=http://backend:5000  # Point frontend to backend
+    depends_on:
+      - backend
 
   backend:
     build:
-      context: ./Server
+      context: ./Server   # Path to the backend directory
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "5000:5000"  # Expose backend on port 5000

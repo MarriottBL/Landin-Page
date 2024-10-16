@@ -1,2 +1,2 @@
 [build]
-dockerfile = "docker-compose.yml"
+compose = "docker-compose.yml"

@@ -8,8 +8,9 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: 'tbs-production.up.railway.app' // Allow requests from your frontend
+    origin: process.env.FRONTEND_URL || 'https://tbs-production.up.railway.app', // Fallback to Railway frontend if env not set
 }));
+
 //Routes
 const calendarRoutes = require('./Routes/calendarRoute');
 app.use('/api/calendar', calendarRoutes);
@@ -24,7 +25,7 @@ app.use('/api', imageRoutes);
 let connectionString = process.env.MONGODB_CONNECTION_STRING;
 mongoose.connect(connectionString)
 .then(()=>{
-    const port = 8000
+    const port = process.env.PORT || 8000;
     console.log("Connected To DB")
     app.listen(port, () =>{
     console.log(`Server is up on port ${port}`)

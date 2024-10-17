@@ -23,7 +23,7 @@ const Gallery = () => {
         try {
             console.log('Fetching products')
             const response = await getProducts();
-            console.log("this is the:", response);
+            console.log("Response from API:", response);
             setProducts(response.data); // Use the product data from the backend
         } catch (error) {
             console.error('Error fetching products:', error);

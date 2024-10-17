@@ -8,7 +8,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'https://tbs-production.up.railway.app', // Fallback to Railway frontend if env not set
+    origin: process.env.FRONTEND_URL || 'https://tbs-production.up.railway.app', // Fallback to Railway frontend
 }));
 
 //Routes

@@ -7,8 +7,9 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({
+    origin: 'tbs-production.up.railway.app' // Allow requests from your frontend
+}));
 //Routes
 const calendarRoutes = require('./Routes/calendarRoute');
 app.use('/api/calendar', calendarRoutes);

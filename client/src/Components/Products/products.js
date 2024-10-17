@@ -21,7 +21,9 @@ const Gallery = () => {
 
     const fetchProducts = async () => {
         try {
+            console.log('Fetching products')
             const response = await getProducts();
+            console.log("this is the:", response);
             setProducts(response.data); // Use the product data from the backend
         } catch (error) {
             console.error('Error fetching products:', error);
@@ -31,6 +33,7 @@ const Gallery = () => {
     if (products === null){
         return <div className="products-gallery"></div>
     }
+
 
     return (
         <div className="products-gallery">

@@ -36,6 +36,9 @@ useEffect (() => {
     if (status === 'loading') return <p>Loading events...</p>;
     if (status === 'failed') return <p>{error}</p>;
 
+    if (events === null){
+        return <div></div>
+    }
     
     return (
             <div>

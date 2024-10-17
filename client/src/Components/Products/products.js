@@ -28,6 +28,9 @@ const Gallery = () => {
         }
     };
 
+    if (products === null){
+        return <div className="products-gallery"></div>
+    }
 
     return (
         <div className="products-gallery">

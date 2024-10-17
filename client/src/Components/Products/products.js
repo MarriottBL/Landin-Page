@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getProducts } from '../../Api/productsApi'; // Fetch products from backend
+// import { getProducts } from '../../Api/productsApi'; // Fetch products from backend
 import './products.css';
 
 const Gallery = () => {
@@ -21,10 +21,10 @@ const Gallery = () => {
 
     const fetchProducts = async () => {
         try {
-            console.log('Fetching products')
-            const response = await getProducts();
-            console.log("Response from API:", response);
-            setProducts(response.data); // Use the product data from the backend
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
+            const data = await response.json();
+            console.log("this is the response data:", data);  // Debugging line
+            setProducts(data); // Use the product data from the backend
         } catch (error) {
             console.error('Error fetching products:', error);
         }

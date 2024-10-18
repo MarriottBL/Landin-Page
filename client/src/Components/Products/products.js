@@ -22,6 +22,7 @@ const Gallery = () => {
     const fetchProducts = async () => {
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
+            console.log(process.env.REACT_APP_API_URL);
             const data = await response.json();
             console.log("this is the response data:", data);  // Debugging line
             setProducts(data); // Use the product data from the backend

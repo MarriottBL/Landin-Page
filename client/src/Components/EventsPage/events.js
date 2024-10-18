@@ -11,7 +11,7 @@ const localizer = momentLocalizer(moment);
 
 
 const CalendarView = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     // const { events, status, error } = useSelector((state) => state.calendar);
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [events, setEvents] = useState([]); // Define events state
@@ -37,7 +37,8 @@ useEffect(() => {
 const fetchEvents = async () => {
     setStatus('loading'); // Set status to loading when fetching starts
     try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/events`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/calendar`);
+        console.log(process.env.REACT_APP_API_URL);
         const data = await response.json(); // Ensure the response is JSON
         setEvents(data); // Set the fetched events to the events state
         setStatus('succeeded'); // Set status to succeeded after fetching

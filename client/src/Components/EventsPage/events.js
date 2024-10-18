@@ -2,7 +2,6 @@ import moment from 'moment'; //for date manipulation
 import React, { useEffect, useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar'; //Library to display calendar UI
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { useDispatch } from 'react-redux'; //to interact with the Redux state
 import CustomCalendar from './Calendar/customCalendar';
 import EventModal from './EventPop/eventModal';
 
@@ -11,8 +10,7 @@ const localizer = momentLocalizer(moment);
 
 
 const CalendarView = () => {
-    const dispatch = useDispatch();
-    // const { events, status, error } = useSelector((state) => state.calendar);
+    
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [events, setEvents] = useState([]); // Define events state
     const [status, setStatus] = useState('idle'); // Define status state

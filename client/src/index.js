@@ -8,6 +8,7 @@ import './index.css';
 import { store } from './Components/EventsPage/Calendar/store';
 import reportWebVitals from './reportWebVitals';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // Wrap with the Provider component from react-redux

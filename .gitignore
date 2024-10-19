@@ -14,4 +14,4 @@ logs
 .DS_Store
 
 # Ignore build files (if you're using something like React)
-client/build/
+

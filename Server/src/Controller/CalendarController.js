@@ -4,7 +4,7 @@ const Calendar = require ('../Model/calendar.js')
 const getCalendar = async (req, res) => {
     try {
         const calendarEvents = await Calendar.find()
-        // console.log("is working", calendarEvents)
+        console.log("is working", calendarEvents)
         res.json(calendarEvents)
     } catch (err) {
         res.status(500).json({ message: err.message })

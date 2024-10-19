@@ -12,7 +12,7 @@ app.use(cors({
     origin: [
         'http://localhost:3000',
         process.env.FRONTEND_URL,
-        'https://tbs-back-production.up.railway.app',
+        'tbs-back-production.up.railway.app',
         'https://tropicalbakingsweets.com'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],

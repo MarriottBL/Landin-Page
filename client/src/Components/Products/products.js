@@ -13,9 +13,13 @@ const Gallery = () => {
     const fetchProducts = async () => {
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
-
-            const data = await response.json();
             
+            // Check if the response status is OK
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status} ${response.statusText}`);
+            }
+    
+            const data = await response.json();
             setProducts(data); // Use the product data from the backend
         } catch (error) {
             console.error('Error fetching products:', error);

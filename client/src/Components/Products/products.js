@@ -20,6 +20,7 @@ const Gallery = () => {
             }
     
             const data = await response.json();
+            console.log('Fetched Products:', data);
             setProducts(data); // Use the product data from the backend
         } catch (error) {
             console.error('Error fetching products:', error);
@@ -40,8 +41,8 @@ const Gallery = () => {
                     <div
                         className="product-card-front"
                         style={{
-                            backgroundImage: product.imageUrl.startsWith('http, https')
-                                ? `url(${product.imageUrl})` // Use external URL if available
+                            backgroundImage: product.imageUrl.startsWith('http')
+                                ? `url(${product.imageUrl})`  // Use external URL if available
                                 : `url(${process.env.PUBLIC_URL}/ProductGallery/${product.imageUrl})` // Use local path otherwise
                         }}
                     ></div>

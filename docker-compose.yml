@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - REACT_APP_API_URL=http://backend:5000  # Point frontend to backend
+      - REACT_APP_API_URL=tbs-back-production.up.railway.app  # Point frontend to backend
     depends_on:
       - backend
 

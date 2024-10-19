@@ -7,6 +7,7 @@ const router = express.Router();
 const getImages = async (req, res) => {
     try {
         const directoryPath = path.join(__dirname, '../../../client/public/ProductGallery/');
+        console.log(directoryPath)
         fs.readdir(directoryPath, (err, files) => {
             if (err) {
                 console.error('Error reading the directory:', err);

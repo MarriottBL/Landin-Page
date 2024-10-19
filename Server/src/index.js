@@ -15,7 +15,6 @@ app.use(cors({
         'https://tropicalbakingsweets.com'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true, // If you're dealing with cookies or sessions
 }));
 
 

@@ -8,7 +8,12 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:3000', process.env.FRONTEND_URL || 'https://tbs-production.up.railway.app'|| 'https://tropicalbakingsweets.com'],
+    origin: [
+        'http://localhost:3000',
+        process.env.FRONTEND_URL,
+        'https://tbs-back-production.up.railway.app',
+        'https://tropicalbakingsweets.com'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true, // If you're dealing with cookies or sessions
 }));

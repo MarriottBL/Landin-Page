@@ -1,11 +1,9 @@
 import axios from 'axios';
 
 
-    const api = axios.create (
-        {
+    const api = axios.create({
             baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api'
-        }
-    )
+        });
 
 export const getCalendar = () => api.get ('/')
 export const postCalendar = (data) => api.post ('/add', data)

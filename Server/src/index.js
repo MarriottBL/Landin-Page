@@ -10,12 +10,11 @@ app.use(express.json());
 
 app.use(cors({
     origin: [
-        'http://localhost:3000',
-        process.env.FRONTEND_URL,
-        'tbs-back-production.up.railway.app',
-        'https://tropicalbakingsweets.com'
+        'http://localhost:3000', // For local development
+        'https://tropicalbakingsweets.com', // Your production domain
+        'https://tbs-back-production.up.railway.app', // The Railway backend URL
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 
 

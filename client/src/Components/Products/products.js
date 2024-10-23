@@ -17,10 +17,7 @@ const Gallery = () => {
             // Check if the response status is OK
             if (!response.ok) {
                 throw new Error(`Server error: ${response.status} ${response.statusText}`);
-            }
-    
-            const data = await response.json();
-            console.log('Fetched Products:', data);
+            }const data = await response.json();
             setProducts(data); // Use the product data from the backend
         } catch (error) {
             console.error('Error fetching products:', error);
@@ -37,7 +34,7 @@ const Gallery = () => {
             <div className={`product-card img img-${index + 1}`} key={index}>
                 <div className="product-card-inner">
                     {/* Display the image using the URL from the backend */}
-                     {/* Front of the card displaying the image */}
+                    {/* Front of the card displaying the image */}
                     <div
                         className="product-card-front"
                         style={{

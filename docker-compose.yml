@@ -3,17 +3,21 @@ services:
   frontend:
     build:
       context: ./client
-      dockerfile: Dockerfile-frontend  # Path to the frontend Dockerfile
+      dockerfile: Dockerfile-frontend # Path to the frontend Dockerfile
     ports:
       - "3000:3000"
     environment:
-      - REACT_APP_API_URL=tbs-back-production.up.railway.app  # Point frontend to backend
+      - REACT_APP_API_URL=https://tbs-back-production.up.railway.app # Point frontend to backend
     depends_on:
       - backend
 
   backend:
     build:
       context: ./Server
-      dockerfile: Dockerfile-backend  # Path to the backend Dockerfile
+      dockerfile: Dockerfile-backend # Path to the backend Dockerfile
     ports:
       - "5000:5000"
+    environment:
+      - MONGODB_CONNECTION_STRING=${MONGODB_CONNECTION_STRING} # Add your MongoDB connection string here
+    depends_on:
+      - mongo_db  # Assuming you are also using MongoDB in a container

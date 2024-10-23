@@ -8,16 +8,18 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '/TBS/client/public/ProductGallery')));
+
 
 app.use(cors({
     origin: [
         'http://localhost:3000', // For local development
-        process.env.FRONTEND_URL,
+        'https://tbs-production.up.railway.app',
         'https://tropicalbakingsweets.com', // Your production domain
         'https://tbs-back-production.up.railway.app', // The Railway backend URL
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 

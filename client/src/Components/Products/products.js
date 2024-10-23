@@ -38,7 +38,7 @@ const Gallery = () => {
                             style={{
                                 backgroundImage: product.imageUrl.startsWith('http')
                                   ? `url(${product.imageUrl})` // Use external URL if available
-                                  : `url(/ProductGallery/${product.imageUrl})`, // Use local path for images inside public/ProductGallery
+                                  : `url(${process.env.PUBLIC_URL}/ProductGallery/${product.imageUrl})`, // Use local path for images inside public/ProductGallery
                             }}
                         ></div>
                         {/* Back of the card displaying product information */}

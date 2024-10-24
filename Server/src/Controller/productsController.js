@@ -14,13 +14,10 @@ const getProducts = async (req, res) => {
 
 //POST
 const createProduct = async (req, res) => {
-    const product = new Product(req.body);
-    try {
-        const newProduct = await product.save();
-        res.status(201).json(newProduct);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
+    console.log("Incoming request for products");
+    const products = await Product.find();
+    console.log("Fetched products:", products);
+    res.status(200).json(products);
 }
 
 //PUT BY ID

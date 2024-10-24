@@ -13,9 +13,7 @@ const Gallery = () => {
     const fetchProducts = async () => {
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
-            if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
-            }
+            if (!response.ok) throw new Error("Failed to fetch products");
             const data = await response.json();
             console.log('Fetched Products:', data);
             setProducts(data); // Use the product data from the backend // Make sure this sets the correct state
@@ -24,6 +22,9 @@ const Gallery = () => {
         }
     };
 
+    if (!products.length) {
+        return <p>No products available</p>;
+    }
     
     return (
             <div className="products-gallery">

@@ -27,20 +27,21 @@ const CalendarView = () => {
     };
 
 //Fetch calendar events when the component loads or status change
-useEffect (() => {
-        if (status === 'idle') {
-            dispatch(fetchCalendar());
-        }
-    }, [dispatch, status]);
+    useEffect(() => {
+    if (status === 'idle') {
+        console.log("Dispatching fetchCalendar");
+        dispatch(fetchCalendar());
+    }
+}, [dispatch, status]);;
 
     if (status === 'loading') return <p>Loading events...</p>;
     if (status === 'failed') return <p>{error}</p>;
 
-    if (events.length === null){
-        return <p>no events avalable</p>
+    if (!events.length) {
+        return <p>No events available</p>;
     }
 
-      // Log the mapped events to see how they are being prepared for the Calendar component
+// Log the mapped events to see how they are being prepared for the Calendar component
         const mappedEvents = events.map(event => ({
         title: event.title,
         start: new Date(event.start),
@@ -48,7 +49,6 @@ useEffect (() => {
         description: event.description,
         location: event.location,
     }));
-    
     console.log("Mapped Calendar Events:", mappedEvents); // Log the mapped calendar events
 
 
@@ -56,22 +56,16 @@ useEffect (() => {
             <div>
                 <div >
                     
-            <Calendar
+                <Calendar
                 localizer={localizer}
-                events={events.map(event => ({
-                    title: event.title,
-                    start: new Date(event.start),
-                    end: new Date(event.end),
-                    description: event.description,
-                    location: event.location
-            }))}
-            views={['month']}
-            components={{ toolbar: CustomCalendar }}
-            onSelectEvent={handleEventClick}
-            startAccessor="start"
-            endAccessor="end"
+                events={mappedEvents} // Use mappedEvents here
+                views={['month']}
+                components={{ toolbar: CustomCalendar }}
+                onSelectEvent={handleEventClick}
+                startAccessor="start"
+                endAccessor="end"
             />
-            </div>
+        </div>
             <EventModal event={selectedEvent} isOpen={!!selectedEvent} onClose={closeModal} />
         </div>
         

@@ -10,10 +10,10 @@ const app = express();
 app.use(express.json());
 
 // Serve static files from the ProductGallery folder
-app.use(express.static(path.join(__dirname, '../client/public/ProductGallery')));
+app.use(express.static(path.join(__dirname, 'client/public/ProductGallery')));
 
 // Serve React app (production build)
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 app.use(cors({

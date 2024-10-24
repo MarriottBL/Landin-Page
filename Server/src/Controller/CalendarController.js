@@ -14,9 +14,9 @@ const postCalendar = async (req, res) => {
 
     try {
         const newCalendarEvent = await calendar.save()
-        res.status(201).json(newCalendarEvent)
+        res.status(200).json(newCalendarEvent)
     } catch (err) {
-        res.status(400).json({ message: err.message })
+        res.status(500).json({  message: 'Error fetching calendar data'})
     }
 }
 

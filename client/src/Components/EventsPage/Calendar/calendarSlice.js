@@ -15,7 +15,7 @@ export const fetchCalendar = createAsyncThunk('calendar/fetchCalendar', async ()
         }
 
         const data = await response.json();
-        console.log("Fetched Calendar Data:", data); // Logging the fetched data
+        console.log(response.status, response.headers.get('content-type'));; // Logging the fetched data
         return data;
     } catch (error) {
         console.error("Error fetching calendar data:", error);

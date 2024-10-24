@@ -6,6 +6,7 @@ import './modal.css';
 const EventModal = ({ event, isOpen, onClose }) => {
     if (!isOpen || !event) return null;
 
+    console.log("Event Data for Modal:", event);
 
     //this handles the event popup when click and show the title, description, date, and start, end time
     return (

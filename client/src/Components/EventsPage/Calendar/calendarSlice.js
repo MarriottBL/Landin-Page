@@ -7,9 +7,20 @@ import { deleteCalendar, postCalendar, putCalendar } from '../../../Api/api';
 
 //  API Requests
 export const fetchCalendar = createAsyncThunk('calendar/fetchCalendar', async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/calendar`);
-    const data = await response.json();
-    return data;
+    try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/calendar`);
+        
+        if (!response.ok) {
+            throw new Error(`Error fetching calendar: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Fetched Calendar Data:", data); // Logging the fetched data
+        return data;
+    } catch (error) {
+        console.error("Error fetching calendar data:", error);
+        throw error;
+    }
 });
 
 export const addCalendar = createAsyncThunk('calendar/addCalendar', async (data) => {

@@ -33,17 +33,29 @@ useEffect (() => {
         }
     }, [dispatch, status]);
 
-
     if (status === 'loading') return <p>Loading events...</p>;
     if (status === 'failed') return <p>{error}</p>;
 
-    if (events === null){
-        return <div></div>
+    if (events.length === null){
+        return <p>no events avalable</p>
     }
+
+      // Log the mapped events to see how they are being prepared for the Calendar component
+        const mappedEvents = events.map(event => ({
+        title: event.title,
+        start: new Date(event.start),
+        end: new Date(event.end),
+        description: event.description,
+        location: event.location,
+    }));
+    
+    console.log("Mapped Calendar Events:", mappedEvents); // Log the mapped calendar events
+
 
     return (
             <div>
                 <div >
+                    
             <Calendar
                 localizer={localizer}
                 events={events.map(event => ({
@@ -62,6 +74,7 @@ useEffect (() => {
             </div>
             <EventModal event={selectedEvent} isOpen={!!selectedEvent} onClose={closeModal} />
         </div>
+        
     );
 };
 

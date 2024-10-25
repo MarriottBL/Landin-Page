@@ -2,10 +2,13 @@ const Calendar = require ('../Model/calendar.js')
 
 //GET
 const getCalendar = async (req, res) => {
-    console.log("Incoming request for calendar");
-    const calendarEvents = await Calendar.find();
-    console.log("Fetched calendar events:", calendarEvents);
-    res.status(200).json(calendarEvents);
+    try {
+        const calendarEvents = await Calendar.find()
+        console.log("is working", calendarEvents)
+        res.json(calendarEvents)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
 }
 
 //POST
@@ -14,9 +17,9 @@ const postCalendar = async (req, res) => {
 
     try {
         const newCalendarEvent = await calendar.save()
-        res.status(200).json(newCalendarEvent)
+        res.status(201).json(newCalendarEvent)
     } catch (err) {
-        res.status(500).json({  message: 'Error fetching calendar data'})
+        res.status(400).json({ message: err.message })
     }
 }
 

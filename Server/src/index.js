@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const cors = require('cors');  
 const path = require('path');
 require('dotenv').config();// Import environment variables from.env file
 
@@ -21,7 +21,7 @@ app.use(cors({
         'http://localhost:3000', // For local development
         'https://tbs-production.up.railway.app',
         'https://tropicalbakingsweets.com', // Your production domain
-        'https://tbs-back-production.up.railway.app/api/calendar', // The Railway backend URL
+        'https://tbs-back-production.up.railway.app', // The Railway backend URL
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']

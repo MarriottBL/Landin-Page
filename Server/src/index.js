@@ -19,7 +19,6 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(cors({
     origin: [
         'http://localhost:3000', // For local development
-        'https://tbs-production.up.railway.app',
         'https://tropicalbakingsweets.com', // Your production domain
         'https://tbs-back-production.up.railway.app', // The Railway backend URL
     ],

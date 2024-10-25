@@ -8,21 +8,21 @@ import { deleteCalendar, postCalendar, putCalendar } from '../../../Api/api';
 //  API Requests
 export const fetchCalendar = createAsyncThunk('calendar/fetchCalendar', async () => {
     return fetch('https://tbs-back-production.up.railway.app/api/calendar')
-        .then(response => {
-            if (!response.ok) {
-            throw new Error('Failed to fetch calendar events'); // Handle non-OK responses
-            }
-            return response.json(); // Parse response as JSON
-        })
-        .then(data => {
-            console.log('Calendar events from API:', data); // Log the parsed JSON data
-            return data; // Return the data for Redux to handle
-        })
-        .catch(error => {
-            console.error('Error while fetching calendar:', error);
-            throw error;
-        });
-})
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();  // Use response.json() if you expect JSON
+      })
+      .then(data => {
+        console.log('Fetched calendar data:', data);
+        return data;
+      })
+      .catch(error => {
+        console.error('Error while fetching calendar:', error);
+        throw error;
+      });
+  });
 
 export const addCalendar = createAsyncThunk('calendar/addCalendar', async (data) => {
     const response = await postCalendar(data);

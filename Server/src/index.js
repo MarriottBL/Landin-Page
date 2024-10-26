@@ -10,11 +10,23 @@ const app = express();
 app.use(express.json());
 
 // Serve static files from the ProductGallery folder
-app.use(express.static(path.join(__dirname, '../client/public/ProductGallery')));
+app.use(express.static(path.join(__dirname, '../../client/public/ProductGallery')));
 
 // Serve React app (production build)
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../../client/build')));
 
+
+app.use('/uploads', express.static(path.join(__dirname, '../../Uploads'))); // Serve static files from the 'uploads' directory
+
+
+// Redirect HTTP to HTTPS
+app.use((req, res, next) => {
+    if (req.secure || process.env.NODE_ENV !== 'production') {
+        next();
+    } else {
+        res.redirect(`https://${req.headers.host}${req.url}`);
+    }
+});
 
 app.use(cors({
     origin: [
@@ -30,19 +42,20 @@ app.use(cors({
 //Routes
 const calendarRoutes = require('./Routes/calendarRoute');
 app.use('/api/calendar', calendarRoutes);
-console.log('calendar route is active')
+
 
 const productRoutes = require('./Routes/productsRoute');
 app.use('/api/products', productRoutes);
-console.log('Products route is active')
+
 
 const imageRoutes = require('./Routes/productGallery');
 app.use('/api', imageRoutes);
-console.log('gallery route is active')
+
 
 //Catch all Routes
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+    const filePath = path.join(__dirname, '../../client/build/index.html');
+    res.sendFile(filePath);
 });
 
 

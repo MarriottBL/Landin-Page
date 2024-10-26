@@ -17,17 +17,6 @@
     margin-bottom: 15px;
 }
 
-.dialog-content p {
-    margin: 5px 0;
-    font-size: 16px;
-    color: #333333;
-}
-
-.dialog-content p span {
-    font-weight: bold;
-    color: #ff9900; /* Accent color for important text */
-}
-
 .dialog-actions {
     display: flex;
     justify-content: center;

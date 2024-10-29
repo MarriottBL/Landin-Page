@@ -4,6 +4,7 @@ const Calendar = require('../Model/calendar.js');
 // GET
 const getCalendar = async (req, res) => {
     try {
+        console.log("Attempting to save file:", req.body);
         const calendarEvents = await Calendar.find();
         res.json(calendarEvents);
     } catch (err) {

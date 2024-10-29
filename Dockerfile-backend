@@ -5,14 +5,14 @@ FROM node:16-alpine
 WORKDIR /index
 
 # Copy the package.json and install dependencies
-COPY ./Server/package.json ./
+COPY Server/package.json Server/package-lock.json ./
 RUN npm install
 
 # Copy the rest of the backend code into the container
-COPY ./Server .
+COPY Server ./
 
 # Set the command to start the backend server
 CMD ["npm", "start"]
 
 # Expose the backend port
-EXPOSE 5000
+EXPOSE 8080

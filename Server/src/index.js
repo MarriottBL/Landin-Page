@@ -25,12 +25,13 @@ app.use((req, res, next) => {
     }
 });
 
+
 app.use(cors({
     origin: [
-        'http://localhost:3000', // For local development
-        'www.tropicalbakingsweets.com', // Your production domain
-        'www.tropicalbakingsweets.com',
-        'tbs-back-production.up.railway.app' // The Railway backend URL
+        'http://localhost:3000',
+        'http://localhost:8080',
+        'https://www.tropicalbakingsweets.com',
+        'https://tbs-back-production.up.railway.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -47,9 +48,12 @@ app.use('/api/products', productRoutes);
 
 //Catch all Routes
 app.get('*', (req, res) => {
+    console.log("Serving frontend from:", path.join(__dirname, '../../client/build/index.html'));
     res.sendFile(path.join(__dirname, '../../client/build/index.html'));
 });
 
+
+console.log("Frontend URL:", process.env.FRONTEND_URL);
 
 //Server
 let connectionString = process.env.MONGODB_CONNECTION_STRING;

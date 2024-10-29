@@ -11,7 +11,7 @@ app.use(express.json());
 
 
 // Serve React app (production build)
-app.use(express.static(path.join(__dirname, '../../client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.use('/uploads/calendar', express.static(path.join(__dirname, '../../Uploads/Calendar'))); // Serve static files from the 'uploads' directory
 app.use('/uploads/products', express.static(path.join(__dirname, '../../Uploads/Products')));
 

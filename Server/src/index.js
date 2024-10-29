@@ -9,14 +9,13 @@ const app = express();
 // Middleware
 app.use(express.json());
 
-// Serve static files from the ProductGallery folder
-app.use(express.static(path.join(__dirname, '../../client/public/ProductGallery')));
 
 // Serve React app (production build)
 app.use(express.static(path.join(__dirname, '../../client/build')));
 
 
-app.use('/uploads', express.static(path.join(__dirname, '../../Uploads'))); // Serve static files from the 'uploads' directory
+app.use('/uploads/calendar', express.static(path.join(__dirname, '../../Uploads/Calendar'))); // Serve static files from the 'uploads' directory
+app.use('/uploads/products', express.static(path.join(__dirname, '../../Uploads/Products')));
 
 
 // Redirect HTTP to HTTPS
@@ -43,13 +42,8 @@ app.use(cors({
 const calendarRoutes = require('./Routes/calendarRoute');
 app.use('/api/calendar', calendarRoutes);
 
-
 const productRoutes = require('./Routes/productsRoute');
 app.use('/api/products', productRoutes);
-
-
-const imageRoutes = require('./Routes/productGallery');
-app.use('/api', imageRoutes);
 
 
 //Catch all Routes

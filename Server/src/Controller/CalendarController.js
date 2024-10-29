@@ -17,7 +17,7 @@ const postCalendar = async (req, res) => {
         title: req.body.title,
         start: req.body.start,
         end: req.body.end,
-        imageUrl:`/uploads/${req.file.filename}` // Store image URL in the database
+        imageUrl:`/uploads/calendar/${req.file.filename}` // Store image URL in the database
     });
     try {
         const newCalendarEvent = await calendar.save();

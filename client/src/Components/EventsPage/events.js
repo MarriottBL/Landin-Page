@@ -5,77 +5,65 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCalendar } from './Calendar/calendarSlice';
 import CustomCalendar from './Calendar/customCalendar';
-import EventModal from './EventPop/eventModal'; // if EventModal is no longer needed, remove it
+import EventModal from './EventPop/eventModal';
 
-
-const EventComponent = ({ event }) => {
-    return (
-        <div>
-            <p>{event.title}</p>  {/* Only display the title */}
-        </div>
-    );
-};
+const EventComponent = ({ event }) => (
+    <div>
+        <p>{event.title}</p>  {/* Display only the title */}
+    </div>
+);
 
 const localizer = momentLocalizer(moment);
 
-
-
-    const CalendarView = () => {
+const CalendarView = () => {
     const dispatch = useDispatch();
     const { events, status, error } = useSelector((state) => state.calendar);
     const [selectedEvent, setSelectedEvent] = useState(null);
 
+    // Fetch events when component mounts
     useEffect(() => {
         if (status === 'idle') {
-            console.log("Dispatching fetchCalendar");
+            // console.log("Dispatching fetchCalendar");
             dispatch(fetchCalendar()).then((response) => {
                 console.log("Fetched Events Data:", response);
             });
         }
     }, [dispatch, status]);
 
-    
+    // Loading, Error, or No Events display logic
     if (status === 'loading') return <p>Loading events...</p>;
     if (status === 'failed') return <p>{error}</p>;
+    if (!events.length) return <p>No events available</p>;
 
-    if (!events.length) {
-        return <p>No events available</p>;
-    }
-
-    const mappedEvents = events.map(event => {
-        console.log("Event Image URL: ", event.imageUrl); // Log the image URL
-        return {
-            ...event,
-            start: new Date(event.start), // Convert start to Date object
-            end: new Date(event.end),     // Convert end to Date object
-        };
-    });
+    // Map events to ensure Date objects for start and end times
+    const mappedEvents = events.map(event => ({
+        ...event,
+        start: new Date(event.start),
+        end: new Date(event.end),
+    }));
 
     return (
         <div>
-        <div>
-        <Calendar
-        localizer={localizer}
-        events={mappedEvents}
-        views={['month']}
-        components={{
-            event: EventComponent, // Custom event rendering
-            toolbar: CustomCalendar
-        }}
-        onSelectEvent={event => setSelectedEvent(event)} // Trigger event on click
-        startAccessor="start"
-        endAccessor="end"
-        />
-        </div>
-        {/* EventModal can be removed if not necessary */}
-        {selectedEvent && (
-        <EventModal
-            event={selectedEvent}
-            isOpen={!!selectedEvent}
-            onClose={() => setSelectedEvent(null)}
+            <Calendar
+                localizer={localizer}
+                events={mappedEvents}
+                views={['month']}
+                components={{
+                    event: EventComponent,
+                    toolbar: CustomCalendar,
+                }}
+                onSelectEvent={event => setSelectedEvent(event)} // Open modal on event click
+                startAccessor="start"
+                endAccessor="end"
             />
-            
-        )}
+            {/* Modal to show event details */}
+            {selectedEvent && (
+                <EventModal
+                    event={selectedEvent}
+                    isOpen={!!selectedEvent}
+                    onClose={() => setSelectedEvent(null)}
+                />
+            )}
         </div>
     );
 };

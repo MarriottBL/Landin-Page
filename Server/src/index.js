@@ -30,7 +30,8 @@ app.use((req, res, next) => {
 app.use(cors({
     origin: [
         'http://localhost:3000', // For local development
-        'https://tropicalbakingsweets.com', // Your production domain
+        'https://www.tropicalbakingsweets.com', // Your production domain
+        'http://www.tropicalbakingsweets.com',
         'https://tbs-back-production.up.railway.app', // The Railway backend URL
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],

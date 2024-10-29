@@ -12,8 +12,6 @@ app.use(express.json());
 
 // Serve React app (production build)
 app.use(express.static(path.join(__dirname, '../../client/build')));
-
-
 app.use('/uploads/calendar', express.static(path.join(__dirname, '../../Uploads/Calendar'))); // Serve static files from the 'uploads' directory
 app.use('/uploads/products', express.static(path.join(__dirname, '../../Uploads/Products')));
 
@@ -49,8 +47,7 @@ app.use('/api/products', productRoutes);
 
 //Catch all Routes
 app.get('*', (req, res) => {
-    const filePath = path.join(__dirname, '../../client/build/index.html');
-    res.sendFile(filePath);
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 

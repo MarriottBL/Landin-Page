@@ -11,7 +11,7 @@ app.use(express.json());
 
 
 // Serve React app (production build)
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../../client/build')));
 app.use('/uploads/calendar', express.static(path.join(__dirname, '../../Uploads/Calendar'))); // Serve static files from the 'uploads' directory
 app.use('/uploads/products', express.static(path.join(__dirname, '../../Uploads/Products')));
 
@@ -28,9 +28,9 @@ app.use((req, res, next) => {
 app.use(cors({
     origin: [
         'http://localhost:3000', // For local development
-        'https://www.tropicalbakingsweets.com', // Your production domain
-        'http://www.tropicalbakingsweets.com',
-        'https://tbs-back-production.up.railway.app', // The Railway backend URL
+        'www.tropicalbakingsweets.com', // Your production domain
+        'www.tropicalbakingsweets.com',
+        'tbs-back-production.up.railway.app' // The Railway backend URL
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -47,7 +47,7 @@ app.use('/api/products', productRoutes);
 
 //Catch all Routes
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+    res.sendFile(path.join(__dirname, '../../client/build/index.html'));
 });
 
 

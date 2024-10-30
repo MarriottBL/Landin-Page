@@ -7,8 +7,13 @@ import { deleteCalendar, postCalendar, putCalendar } from '../../../Api/api';
 
 //  API Requests
 export const fetchCalendar = createAsyncThunk('calendar/fetchCalendar', async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/calendar`);
+    const apiUrl = `${process.env.REACT_APP_API_URL}/api/calendar`;
+    console.log("Fetching calendar events from:", apiUrl); // Log the full API URL
+
+    const response = await fetch(apiUrl);
     const data = await response.json();
+
+    console.log("Fetched calendar data:", data); // Log the data received
     return data;
 });
 

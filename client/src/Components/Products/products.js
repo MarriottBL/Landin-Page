@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './products.css';
+import { logApiRequest } from '../../utils/apiUtils';
 
 const Gallery = () => {
     const [products, setProducts] = useState([]);
@@ -10,15 +11,19 @@ const Gallery = () => {
 
     const fetchProducts = async () => {
         try {
-            // console.log("Fetching products from:", `${process.env.REACT_APP_API_URL}/api/products`);
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
-            if (!response.ok) throw new Error("Failed to fetch products");
-            const data = await response.json();
+            const apiUrl = `${process.env.REACT_APP_API_URL}/api/products`;
+            console.log("Fetching products from:", apiUrl); // Log the full API URL
+            
+            // Use logApiRequest directly for the fetch and logging
+            const data = await logApiRequest(apiUrl);
+
+            console.log("Products data received:", data); // Log the data received from the API
             setProducts(data);
         } catch (error) {
             console.error("Error fetching products:", error);
         }
     };
+
     if (!products.length) {
         return <p>No products available</p>;
     }

@@ -3,27 +3,39 @@ const Calendar = require('../Model/calendar.js');
 
 // GET
 const getCalendar = async (req, res) => {
+    console.log("GET /api/calendar called")
     try {
-        console.log("Attempting to save file:", req.body);
         const calendarEvents = await Calendar.find();
+        console.log("Fetched Calendar Events:", calendarEvents);
         res.json(calendarEvents);
     } catch (err) {
+        console.error("Error fetching calendar events:", err.message);
         res.status(500).json({ message: err.message });
     }
 };
 
 // POST (with image upload, start, and end)
 const postCalendar = async (req, res) => {
-    const calendar = new Calendar({
-        title: req.body.title,
-        start: req.body.start,
-        end: req.body.end,
-        imageUrl:`/uploads/calendar/${req.file.filename}` // Store image URL in the database
-    });
+    console.log("POST /api/calendar/add called");
+    console.log("Data received:", req.body);
     try {
+        if (!req.file) {
+            console.warn("File upload failed: no file received");
+            return res.status(400).json({ message: "File upload failed" });
+        }
+
+        const calendar = new Calendar({
+            title: req.body.title,
+            start: req.body.start,
+            end: req.body.end,
+            imageUrl: `/uploads/calendar/${req.file.filename}`
+        });
+
         const newCalendarEvent = await calendar.save();
+        console.log("New Calendar Event saved:", newCalendarEvent);
         res.status(201).json(newCalendarEvent);
     } catch (err) {
+        console.error("Error saving calendar event:", err.message);
         res.status(400).json({ message: err.message });
     }
 };

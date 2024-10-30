@@ -5,11 +5,11 @@ import ProfilePage from "./Components/HomePage/Main/mainPage";
 import Admin from "./Admin/admin";
 
 
+console.log("backend API URL:", process.env.REACT_APP_API_URL);
 
 
 function App() {
 
-  console.log("backend URL:", process.env.REACT_APP_API_URL)
 
   return (
     <div className="App">

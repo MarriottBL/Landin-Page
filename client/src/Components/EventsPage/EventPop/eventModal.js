@@ -11,7 +11,7 @@ const EventModal = ({ event, isOpen, onClose }) => {
         // Log the event data, including imageUrl
         console.log("Event Data for Modal:", event);
         console.log("Image URL: ", calendarUrl); // Log the image URL
-        // console.log("whats is this", `${process.env.REACT_APP_API_URL}${event.imageUrl}`)
+        console.log("EventModal URL", `${process.env.REACT_APP_API_URL}${event.imageUrl}`)
         
 
 

@@ -13,7 +13,7 @@ const Gallery = () => {
         try {
             const apiUrl = `${process.env.REACT_APP_API_URL}/api/products`;
             console.log("Fetching products from:", apiUrl); // Log the full API URL
-            
+            console.log("Using API URL:", process.env.REACT_APP_API_URL);
             // Use logApiRequest directly for the fetch and logging
             const data = await logApiRequest(apiUrl);
 

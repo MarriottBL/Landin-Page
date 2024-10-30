@@ -55,6 +55,8 @@ app.get('*', (req, res) => {
 
 console.log("Frontend URL:", process.env.FRONTEND_URL);
 console.log("DB URL:", process.env.MONGODB_CONNECTION_STRING);
+console.log("DB URL:", process.env.BACKEND_URL);
+
 
 //Server
 let connectionString = process.env.MONGODB_CONNECTION_STRING;

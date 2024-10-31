@@ -15,7 +15,7 @@
         left: 50%;
         transform: translateX(-50%); /* Centers the box horizontally */
         width: 80%; /* Adjust the width to control how wide the box is */
-        background-color: #fff; /* White background for contrast */
+        background-color: #e6e4e4; /* White background for contrast */
         padding: 20px;
         border-radius: 10px; /* Rounded corners */
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Optional shadow to make it pop */
@@ -48,13 +48,26 @@
         display: flex;
         align-items: center;
         z-index: 15; /* Ensure this stays above header but below modal */
+
+    }
+
+    /* Social Media Icon Styling */
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px; /* Set width for uniform size */
+        height: 40px; /* Set height for uniform size */
+        border-radius: 50%;
+        overflow: hidden; /* Clip image inside */
+        transition: background-color 0.3s ease;
     }
     
     /* Social media icons */
     .social-media-icons a {
         color: #2a86aa;
         margin: 0 10px;
-        font-size: 15px;
+        font-size: clamp(1.5rem, 2vw + 1rem, 3.5rem);
         text-decoration: none;
     }
     
@@ -64,11 +77,11 @@
     }
 
     .fa-instagram{
-        width: 22px;
+        width: 30px;
     }
 
     .fa-facebook{
-        width: 18px;
+        width: 25px;
     }
     
     /* Registration link */
@@ -76,13 +89,13 @@
         display: flex;
         align-items: center;
         color: #fff;
-        padding: 10px 10px;
+        padding: 30px 20px;
         text-decoration: none;
         transition: background-color 0.3s ease;
     }
     
     .register-icon {
-        width: 15px; /* Adjust icon size as needed */
+        width: 20px; /* Adjust icon size as needed */
         margin-right: 1px; /* Space between icon and text */
     }
 
@@ -101,13 +114,13 @@
     }
 
     .profile-content h2 {
+        font-size: clamp(1.5rem, 2vw + 0.5rem, 2.5rem);
         margin: 10px 0;
         font-family: Montserrat;
     }
 
     .profile-content h4 {
-        margin: 5px 0;
-        font-size: 17px;
+        font-size: clamp(1rem, 1.5vw + 0.5rem, 1.5rem);
         color: #777;
     }
 
@@ -142,3 +155,15 @@
         display: block; /* Show the active tab content */
     }
 
+    /* Adjust header height for smaller screens */
+    @media (max-width: 768px) {
+        .header-background {
+            height: 200px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .overlapping-box {
+            width: 90%;
+        }
+    }

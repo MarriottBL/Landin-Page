@@ -4,12 +4,11 @@
         border: 1px solid #f3f3f3;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 30px;
+        padding: 20px;
         font-family: 'Arial', sans-serif;
         width: 100%; /* Set width to 100% to make it responsive */
         max-width: 1200px; /* Increase maximum width */
         height: 600px; /* Allow height to auto-adjust */
-        width: 800px;
         margin: 0 auto; /* Center align the calendar */
     }
     
@@ -29,7 +28,7 @@
     }
     
     .rbc-toolbar span {
-        font-size: 2.5em;
+        font-size: clamp(1.5rem, 2vw + 1rem, 3.5rem);
         color: #333333;
     }
     
@@ -87,9 +86,22 @@
         border: 1px solid #2a86aa;
     }
 
-    
+    /* Medium screens (tablets) */
+    @media (max-width: 1024px) {
+        .rbc-calendar {
+            max-width: 90%;
+        }
+        .rbc-toolbar span {
+            font-size: 2rem; /* Smaller font */
+        }
+    }
+
+    /* Small screens (mobile) */
     @media (max-width: 768px) {
         .rbc-calendar {
-          max-width: 100%; /* Full width on smaller screens */
+            max-width: 100%;
+        }
+        .rbc-toolbar span {
+            font-size: 1.5rem; /* Smaller font for mobile */
         }
     }

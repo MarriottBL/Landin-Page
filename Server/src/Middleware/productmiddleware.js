@@ -3,11 +3,9 @@ const path = require('path');
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '../../../Uploads/Products'));
-    },
+    destination: path.resolve(__dirname, '../../uploads/products'), // ensures absolute path
     filename: (req, file, cb) => {
-        cb(null,  file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
 

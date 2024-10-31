@@ -3,7 +3,7 @@
   grid-template-columns: repeat(22, 2fr);
   grid-auto-rows: 100px; /* Set default row height */
   gap: 20px; /* Spacing between images */
-  max-width: 650px; /* Adjust max-width to better fit two-column layout */
+  max-width: 1000px; /* Adjust max-width to better fit two-column layout */
   margin: 0 auto; /* Center the gallery on the page */
   padding: 20px; /* Padding around the gallery */
 }
@@ -60,21 +60,28 @@
 }
 
 
-/* Responsive Design */
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .products-gallery {
+      grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  }
+}
+
+/* Small screens (mobile) */
 @media (max-width: 768px) {
   .products-gallery {
-    grid-template-columns: repeat(2, 1fr); /* 2 images per row on tablets */
+      grid-template-columns: repeat(2, 1fr); /* 2 items per row */
   }
 }
 
 @media (max-width: 480px) {
   .products-gallery {
-    grid-template-columns: 1fr; /* 1 image per row on mobile */
+      grid-template-columns: 1fr; /* 1 item per row */
   }
 }
 
-/* Flip Effect */
 
+/* Flip Effect */
 .product-card {
   perspective: 1000px; /* Perspective for 3D effect */
 }
@@ -117,7 +124,7 @@
   transform: rotateY(180deg); /* Flips the back side */
   padding: 10px;
   flex-direction: column;
-  font-size: 16px;
+  font-size: clamp(1.5rem, 2vw + 1rem, 3.5rem);
 }
 
 /* fall back image */

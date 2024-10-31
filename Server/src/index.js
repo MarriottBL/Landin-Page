@@ -52,11 +52,10 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../client/build/index.html'));
 });
 
-
-console.log("Frontend URL:", process.env.FRONTEND_URL);
-console.log("DB URL:", process.env.MONGODB_CONNECTION_STRING);
-console.log("DB URL:", process.env.BACKEND_URL);
-console.log("REACT_APP_API_URL:", process.env.REACT_APP_API_URL);
+//Debugging Routes
+// console.log("Frontend URL:", process.env.FRONTEND_URL);
+// console.log("DB URL:", process.env.MONGODB_CONNECTION_STRING);
+// console.log("REACT_APP_API_URL:", process.env.REACT_APP_API_URL);
 
 
 //Server

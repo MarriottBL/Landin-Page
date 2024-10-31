@@ -1,6 +1,6 @@
+// import axios from 'axios';
 // import React, { useEffect, useState } from 'react';
 // import { createProduct, updateProduct } from '../Api/productsApi';
-// import axios from 'axios';
 
 // const AdminProductForm = ({ editMode, productToEdit, onSuccess }) => {
 //     const [name, setName] = useState('');

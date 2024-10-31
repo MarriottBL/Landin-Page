@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './products.css';
-import { logApiRequest } from '../../utils/apiUtils';
 
 const Gallery = () => {
     const [products, setProducts] = useState([]);
@@ -12,12 +11,8 @@ const Gallery = () => {
     const fetchProducts = async () => {
         try {
             const apiUrl = `${process.env.REACT_APP_API_URL}/api/products`;
-            console.log("Fetching products from:", apiUrl); // Log the full API URL
-            console.log("Using API URL:", process.env.REACT_APP_API_URL);
-            // Use logApiRequest directly for the fetch and logging
-            const data = await logApiRequest(apiUrl);
-
-            console.log("Products data received:", data); // Log the data received from the API
+            const response = await fetch(apiUrl);
+            const data = await response.json();
             setProducts(data);
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -28,7 +23,6 @@ const Gallery = () => {
         return <p>No products available</p>;
     }
 
-    
     return (
         <div className="products-gallery">
         {products.map((product, index) => (
@@ -39,8 +33,8 @@ const Gallery = () => {
                         className="product-card-front"
                         style={{
                             backgroundImage: product.imageUrl
-                            ? `url(${process.env.REACT_APP_API_URL}${product.imageUrl})`
-                            : 'url(/path/to/placeholder/image.jpg)',
+                                ? `url(${process.env.REACT_APP_API_URL}${product.imageUrl})`
+                                : 'url(/path/to/placeholder/image.jpg)'
                         }}
                     ></div>
                     {/* Back of the card displaying product information */}

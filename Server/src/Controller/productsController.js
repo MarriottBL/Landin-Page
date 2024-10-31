@@ -2,21 +2,21 @@ const Product = require('../Model/products.js');
 
 // GET ALL
 const getProducts = async (req, res) => {
-    console.log("GET /api/products called");
+        // console.log("GET /api/products called");
     try {
         const products = await Product.find();
-        console.log("Fetched Products:", products);
+        // console.log("Fetched Products:", products);
         res.json(products);
     } catch (err) {
-        console.error("Error fetching products:", err.message);
+        // console.error("Error fetching products:", err.message);
         res.status(500).json({ message: err.message });
     }
 }
 
 // POST
 const createProduct = async (req, res) => {
-    console.log("POST /api/products/add called");
-    console.log("Data received:", req.body);
+    // console.log("POST /api/products/add called");
+    // console.log("Data received:", req.body);
     const imageUrl = req.file ? `/uploads/products/${req.file.filename}` : null;
 
     const newProduct = new Product({
@@ -28,10 +28,10 @@ const createProduct = async (req, res) => {
     });
     try {
         const savedProduct = await newProduct.save();
-        console.log("New Product saved:", savedProduct);
+        // console.log("New Product saved:", savedProduct);
         res.status(201).json(savedProduct);
     } catch (err) {
-        console.error("Error creating product:", err.message);
+        // console.error("Error creating product:", err.message);
         res.status(400).json({ message: err.message });
     }
 };

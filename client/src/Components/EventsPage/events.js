@@ -23,15 +23,9 @@ const CalendarView = () => {
     // Fetch events when component mounts
     useEffect(() => {
         if (status === 'idle') {
-            console.log("Dispatching fetchCalendar"); // Log before fetching
-            dispatch(fetchCalendar()).then((response) => {
-                console.log("Fetched Events Data:", response); // Log fetched events
-            });
+            dispatch(fetchCalendar())
         }
     }, [dispatch, status]);
-
-    console.log("Calendar events:", events);
-    console.log("Calendar fetch status:", status);
 
     // Loading, Error, or No Events display logic
     if (status === 'loading') return <p>Loading events...</p>;

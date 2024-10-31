@@ -50,7 +50,7 @@
 /* Tab label styling */
 .tab-label {
     margin-top: 5px; /* Space between the icon and the label */
-    font-size: 12px; /* Font size for the label */
+    font-size: clamp(0.8rem, 1vw, 1.0rem); /* Responsive font */ /* Font size for the label */
     color: #333; /* Text color */
     text-align: center;
 }

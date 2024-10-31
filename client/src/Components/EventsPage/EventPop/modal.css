@@ -11,7 +11,7 @@
 }
 
 .dialog-title {
-    font-size: 24px;
+    font-size: clamp(1.5rem, 2vw + 1rem, 3.5rem);
     font-weight: bold;
     color: #006699; /* Vibrant color for title */
     margin-bottom: 15px;

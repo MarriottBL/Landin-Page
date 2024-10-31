@@ -4,13 +4,13 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import ProfilePage from "./Components/HomePage/Main/mainPage";
 
-
-console.log("backend API URL:", process.env.REACT_APP_API_URL);
+//Debugging routes
+// console.log("backend API URL:", process.env.REACT_APP_API_URL);
 
 
 function App() {
 
-
+  
   return (
     <div className="App">
     <Router>

@@ -26,7 +26,6 @@ const createProduct = async (req, res) => {
         category: req.body.category,
         imageUrl: imageUrl,
     });
-    console.log("Product image URL:", Product.imageUrl);
     try {
         const savedProduct = await newProduct.save();
         // console.log("New Product saved:", savedProduct);

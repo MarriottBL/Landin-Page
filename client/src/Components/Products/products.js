@@ -14,7 +14,6 @@ const Gallery = () => {
             const response = await fetch(apiUrl);
             const data = await response.json();
             setProducts(data);
-            console.log("Fetching products from:", apiUrl);
         } catch (error) {
             console.error("Error fetching products:", error);
         }
@@ -28,7 +27,6 @@ const Gallery = () => {
     return (
         <div className="products-gallery">
         {products.map((product, index) => (
-            console.log("Image URL:", `${process.env.REACT_APP_API_URL}${product.imageUrl}`),
             <div className={`product-card img img-${index + 1}`} key={index}>
                 <div className="product-card-inner">
                     {/* Front of the card displaying the image */}

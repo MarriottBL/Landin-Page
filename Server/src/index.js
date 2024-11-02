@@ -29,12 +29,12 @@ app.use('/uploads/calendar', (req, res, next) => {
     res.header('Content-Type', 'image/jpeg'); // Or use dynamic types if necessary
     console.log(`Serving Calendar images from: ${path.join(__dirname, '../../Uploads/Calendar')}`);
     next();
-}, express.static(path.join(__dirname, '../../Uploads/Calendar')));
+}, express.static(path.join(__dirname, '../Uploads/Calendar')));
 app.use('/uploads/products', (req, res, next) => {
     res.header('Content-Type', 'image/jpeg'); // Set the correct MIME type here
     console.log(`Serving product images from: ${path.join(__dirname, '../../Uploads/Products')}`);
     next();
-}, express.static(path.join(__dirname, '../../Uploads/Products')));
+}, express.static(path.join(__dirname, '../Uploads/Products')));
 
 
 // Redirect HTTP to HTTPS

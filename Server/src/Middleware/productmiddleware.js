@@ -3,7 +3,7 @@ const multer = require('multer');
 const path = require('path');
 
 // Define the upload path without creating it initially
-const productUploadPath = path.join(__dirname, '../../../Uploads/Products');
+const productUploadPath = path.join(__dirname, '../../Uploads/Products');
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({

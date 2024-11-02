@@ -22,8 +22,14 @@ app.use(cors(corsOptions));
 
 // Serve React app (production build)
 app.use(express.static(path.join(__dirname, '../../client/build')));
-app.use('/uploads/calendar', cors(corsOptions), express.static(path.join(__dirname, '../../Uploads/Calendar')));
-app.use('/uploads/products', cors(corsOptions), express.static(path.join(__dirname, '../../Uploads/Products')));
+app.use('/uploads/calendar', (req, res, next) => {
+    res.header('Content-Type', 'image/jpeg'); // Or use dynamic types if necessary
+    next();
+}, express.static(path.join(__dirname, '../../Uploads/Calendar')));
+app.use('/uploads/products', (req, res, next) => {
+    res.header('Content-Type', 'image/jpeg'); // Set the correct MIME type here
+    next();
+}, express.static(path.join(__dirname, '../../Uploads/Products')));
 
 
 // Redirect HTTP to HTTPS

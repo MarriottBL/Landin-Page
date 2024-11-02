@@ -1,0 +1,79 @@
+/* Calendar Wrapper Adjustments for Mobile */
+.rbc-calendar {
+    max-width: 100%;
+    padding: 10px;
+    height: auto; /* Flexible height */
+    margin: 0 auto;
+}
+
+/* Toolbar - Adjusted for Mobile */
+.rbc-toolbar button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+}
+
+.rbc-toolbar span {
+    font-size: 1.5rem;
+}
+
+/* Event Style Adjustments */
+.rbc-event {
+    font-size: 0.6em;
+    padding: 3px;
+}
+
+/* Calendar Cells Adjustments */
+.rbc-month-view {
+    font-size: 0.8em;
+}
+
+.rbc-day-bg {
+    padding: 5px;
+}
+
+/* Day/Month Labels */
+.rbc-header {
+    padding: 8px;
+}
+
+/* Portrait Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    .rbc-calendar {
+        max-width: 100%;
+        padding: 15px;
+    }
+    .rbc-toolbar span {
+        font-size: 1.2rem;
+    }
+    .rbc-event {
+        font-size: 0.6em;
+        padding: 3px;
+    }
+    .rbc-day-bg, .rbc-header {
+        padding: 5px;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .rbc-calendar {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        height: auto;
+    }
+    .rbc-toolbar {
+        display: flex;
+        justify-content: space-between;
+    }
+    .rbc-toolbar span {
+        font-size: 1.4rem;
+    }
+    .rbc-event {
+        font-size: 0.6em;
+        padding: 3px;
+    }
+    .rbc-day-bg, .rbc-header {
+        padding: 5px;
+    }
+}

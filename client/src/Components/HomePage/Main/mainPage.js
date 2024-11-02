@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import About from '../../About/about';
 import Events from '../../EventsPage/events';
 import Products from '../../Products/products';
@@ -9,6 +9,20 @@ import "./profileHeader.css";
 
 const ProfilePage = () => {
     const [activeTab, setActiveTab] = useState('products')
+
+    //Responsive Screen
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                import('./mobileMain.css').then(() => {
+                    console.log('Mobile CSS for header loaded');
+                });
+            }
+        };
+        handleResize(); // Check on initial load
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div className="header-container">

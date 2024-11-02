@@ -1,0 +1,76 @@
+/* about-mobile.css */
+
+/* Portrait mode (default for mobile) */
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    .about-container {
+        display: block;
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .about-img-wrapper {
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .about-img {
+        width: 100%;
+        max-width: none;
+        border-radius: 10px;
+    }
+
+    .about-text {
+        padding: 0 10px;
+    }
+
+    .about-text h2,
+    .about-text h4,
+    .about-text p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Landscape mode (adjust layout and sizes if necessary) */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .about-container {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 10px;
+        gap: 15px; /* Add space between image and text */
+    }
+
+    .about-img-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-img {
+        width: 80%; /* Set a responsive width to fit the layout */
+        max-width: 200px; /* Cap the size for landscape mode */
+        border-radius: 10px;
+        margin-bottom: 10px; /* Add spacing below the image */
+    }
+
+    .about-text {
+        width: 100%;
+        padding: 0 10px;
+        text-align: center; /* Center-align text for a balanced look */
+        font-size: 0.9rem;
+    }
+
+    .about-text h2,
+    .about-text h4 {
+        font-size: 1.2rem; /* Adjust heading sizes */
+        margin: 10px 0;
+    }
+
+    .about-text p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}

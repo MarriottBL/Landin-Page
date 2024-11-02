@@ -1,0 +1,171 @@
+/* Header Background adjustments for Mobile */
+.header-background {
+    height: 200px;
+    background: linear-gradient(to bottom, #001831 70%, #e8b634 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Overlapping Box adjustments */
+.overlapping-box {
+    top: 160px;
+    width: 90%;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Profile Image Wrapper adjustments for Mobile */
+.profile-image-wrapper {
+    top: -70px;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+/* Social Media Icon Styling for Mobile */
+.top-right-section {
+    top: 10px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.social-media-icons a {
+    font-size: 1.2rem;
+}
+
+/* Registration Button */
+.registration-link {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+}
+
+/* Profile Content Styling */
+.profile-content {
+    margin-top: 60px;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.profile-content h2 {
+    font-size: 1.5rem;
+}
+
+.profile-content h4 {
+    font-size: 1rem;
+}
+
+.profile-content p {
+    font-size: 0.9rem;
+    max-width: 90%;
+    line-height: 1.4;
+    margin: 15px 0;
+}
+
+/* Center the Tab Icons Container */
+.tab-icons {
+    display: flex;
+    justify-content: center; /* Center align icons */
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.tab-icons .tab-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.tab-icons .tab-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+.tab-icons .tab-icon span {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Portrait Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    .header-background {
+        height: 180px;
+    }
+
+    .overlapping-box {
+        top: 140px;
+        width: 95%;
+    }
+
+    .profile-image-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .profile-content h4 {
+        font-size: 0.9rem;
+    }
+
+    .tab-icons .tab-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .tab-icons .tab-icon img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .header-background {
+        height: 150px;
+    }
+
+    .overlapping-box {
+        top: 120px;
+        width: 85%;
+    }
+
+    .profile-image-wrapper {
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .profile-content h4 {
+        font-size: 0.8rem;
+    }
+
+    .tab-icons .tab-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tab-icons .tab-icon img {
+        width: 20px;
+        height: 20px;
+    }
+}

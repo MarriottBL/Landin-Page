@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './faq.css';
 
 const Questions = () => {
@@ -7,6 +7,20 @@ const Questions = () => {
     const toggleQuestion = (index) => {
         setOpenQuestion(openQuestion === index ? null : index);
     };
+
+    //Responsive for Screen size
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                import('./mobileFaq.css').then(() => {
+                    console.log('Mobile CSS for FAQ loaded');
+                });
+            }
+        };
+        handleResize(); // Check on initial load
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const faqData = [
         {

@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './about.css';
 
-const aboutMe = () => {
+const AboutMe = () => {
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                import('./mobileAb.css').then(() => {
+                    console.log('Mobile CSS for About loaded');
+                });
+            }
+        };
+
+        handleResize(); // Check on initial load
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
 
     return (
         <div className='about-container' >
@@ -28,4 +43,4 @@ const aboutMe = () => {
 }
 
 
-export default aboutMe;
+export default AboutMe;

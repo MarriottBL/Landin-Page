@@ -1,0 +1,83 @@
+/* Modal Styles for Mobile */
+
+/* Container adjustments for mobile screens */
+.dialog-container {
+    max-width: 90%; /* Reduce width for smaller screens */
+    padding: 15px; /* Adjust padding for compact spacing */
+    margin: 0 auto; /* Center align the modal */
+    font-size: 0.9rem; /* Reduce font size slightly */
+    border-radius: 10px; /* Slightly smaller border radius */
+}
+
+/* Title adjustments */
+.dialog-title {
+    font-size: clamp(1.2rem, 2vw + 1rem, 2.5rem); /* Adjust title size */
+    margin-bottom: 10px;
+}
+
+/* Actions section adjustments */
+.dialog-actions {
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    gap: 10px; /* Add space between buttons */
+    padding-top: 10px;
+}
+
+.dialog-actions button {
+    padding: 8px 12px; /* Reduce padding */
+    font-size: 0.85rem; /* Smaller font size for buttons */
+}
+
+/* Portrait Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    .dialog-container {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .dialog-title {
+        font-size: 1.3rem;
+    }
+
+    .dialog-actions {
+        padding-top: 8px;
+    }
+
+    .dialog-actions button {
+        padding: 8px 15px;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .dialog-container {
+        max-width: 80%; /* Slightly wider for landscape */
+        padding: 10px;
+    }
+
+    .dialog-title {
+        font-size: 1.4rem;
+    }
+
+    .dialog-actions {
+        padding-top: 8px;
+        flex-direction: row; /* Keep buttons side-by-side in landscape */
+        gap: 8px;
+    }
+
+    .dialog-actions button {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Animation adjustments for smaller screens */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95); /* Smaller initial scale for mobile */
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

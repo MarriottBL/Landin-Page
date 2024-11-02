@@ -1,0 +1,144 @@
+/* FAQ Container for Mobile */
+.faq-container {
+    display: block; /* Stack image and text vertically */
+    max-width: 100%;
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+/* Image Styling for Mobile */
+.faq-img-wrapper {
+    padding: 0;
+    margin-bottom: 20px; /* Add space below the image */
+    text-align: center; /* Center-align the image */
+}
+
+.faq-img {
+    width: 80%; /* Adjust width to fit layout */
+    max-width: 250px; /* Limit size on smaller screens */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Section Styling for Mobile */
+.faq-text {
+    padding: 0 10px;
+}
+
+.faq-text h2 {
+    font-size: 1.5rem; /* Adjust heading size */
+    margin-bottom: 15px;
+}
+
+/* FAQ List Adjustments */
+.faq-list {
+    margin-top: 20px;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-question {
+    font-size: 1.2rem; /* Smaller font for mobile */
+}
+
+.faq-answer {
+    font-size: 1rem;
+    padding-left: 15px;
+}
+
+/* Portrait Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    .faq-container {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        max-width: 100%;
+        padding: 15px;
+        margin: 20px auto;
+        border-radius: 10px;
+        align-items: center;
+    }
+
+    /* Text section appears first */
+    .faq-text {
+        width: 100%;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .faq-text h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .faq-question {
+        font-size: 1.2rem;
+    }
+
+    .faq-answer {
+        font-size: 1rem;
+        padding-left: 0;
+    }
+
+    /* Image section appears below text */
+    .faq-img-wrapper {
+        padding: 0;
+        margin-top: 20px; /* Add space above the image */
+        text-align: center;
+    }
+
+    .faq-img {
+        width: 80%;
+        max-width: 150px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+/* Landscape Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .faq-container {
+        display: flex;
+        flex-direction: row; /* Keep image and text side by side */
+        max-width: 100%;
+        padding: 15px;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .faq-img-wrapper {
+        flex: 1;
+        text-align: center;
+        padding: 0;
+    }
+
+    .faq-img {
+        width: 100%;
+        max-width: 120px; /* Limit image size for landscape */
+        border-radius: 10px;
+    }
+
+    .faq-text {
+        flex: 2;
+        padding: 0 10px;
+        text-align: left;
+    }
+
+    .faq-text h2 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .faq-question {
+        font-size: 1.1rem;
+    }
+
+    .faq-answer {
+        font-size: 1rem;
+    }
+}

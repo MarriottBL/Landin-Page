@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - REACT_APP_API_URL=tbs-back-production.up.railway.app
+      - REACT_APP_API_URL=https://tbs-back.up.railway.app
     depends_on:
       - backend
 

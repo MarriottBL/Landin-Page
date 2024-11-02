@@ -34,7 +34,7 @@ const Gallery = () => {
                         style={{
                             backgroundImage: product.imageUrl
                                 ? `url(${process.env.REACT_APP_API_URL}${product.imageUrl})`
-                                : 'url(/path/to/placeholder/image.jpg)'
+                                : 'url(/path/to/placeholder/image.jpg)',
                         }}
                     ></div>
                     {/* Back of the card displaying product information */}

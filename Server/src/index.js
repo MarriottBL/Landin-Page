@@ -10,10 +10,20 @@ const app = express();
 app.use(express.json());
 
 
+// CORS configuration
+const corsOptions = {
+    origin: ['http://localhost:3000', 'https://www.tropicalbakingsweets.com'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    exposedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
+
+
 // Serve React app (production build)
 app.use(express.static(path.join(__dirname, '../../client/build')));
-app.use('/uploads/calendar', express.static(path.join(__dirname, '../../Uploads/Calendar'))); // Serve static files from the 'uploads' directory
-app.use('/uploads/products', express.static(path.join(__dirname, '../../Uploads/Products')));
+app.use('/uploads/calendar', cors(corsOptions), express.static(path.join(__dirname, '../../Uploads/Calendar')));
+app.use('/uploads/products', cors(corsOptions), express.static(path.join(__dirname, '../../Uploads/Products')));
 
 
 // Redirect HTTP to HTTPS
@@ -24,18 +34,6 @@ app.use((req, res, next) => {
         res.redirect(`https://${req.headers.host}${req.url}`);
     }
 });
-
-
-app.use(cors({
-    origin: [
-        'http://localhost:3000',
-        'http://localhost:8080',
-        'https://www.tropicalbakingsweets.com',
-        'https://tbs-back-production.up.railway.app'
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
 
 
 //Routes

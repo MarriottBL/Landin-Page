@@ -2,7 +2,7 @@ const Product = require('../Model/products.js');
 
 // GET ALL
 const getProducts = async (req, res) => {
-        // console.log("GET /api/products called");
+        console.log("GET /api/products called");
     try {
         const products = await Product.find();
         // console.log("Fetched Products:", products);

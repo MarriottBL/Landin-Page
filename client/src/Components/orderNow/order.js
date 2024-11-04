@@ -4,7 +4,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './order.css';
 
 function Order() {

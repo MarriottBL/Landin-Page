@@ -1,0 +1,67 @@
+/* Container for the products gallery */
+.products-gallery {
+    display: grid;
+    grid-template-columns: 45% 55%; /* Maintain the good proportion we found */
+    gap: 10px; /* Increased from 3px */
+    padding: 10px; /* Increased padding to match gap */
+    width: 100%;
+}
+
+/* Individual product image container */
+.img {
+    position: relative;
+    width: 100%;
+}
+
+/* Images in left column */
+.img:nth-child(odd) {
+    grid-column: 1;
+    width: 98%;
+}
+
+/* Images in right column */
+.img:nth-child(even) {
+    grid-column: 2;
+    width: 100%;
+}
+
+/* Styling for the images */
+.img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* Price Box */
+.price-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 12px;
+    padding: 8px;
+    background-color: rgba(255, 243, 205, 0.95);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 480px) {
+    .products-gallery {
+        grid-template-columns: 48% 52%; /* Even closer sizes for mobile */
+        gap: 2px;
+        padding: 2px;
+    }
+    
+    .img:nth-child(odd) {
+        width: 100%;
+    }
+    
+    .price-box {
+        font-size: 11px;
+        padding: 6px;
+    }
+}
+  

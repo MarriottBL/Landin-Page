@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './tabs.css';
 
 // Import your images from the gallery
-import productsIcon from '../../Gallery/mixer.png';
-import eventsIcon from '../../Gallery/calendar.png';
 import aboutIcon from '../../Gallery/abot.png';
+import eventsIcon from '../../Gallery/calendar.png';
+import productsIcon from '../../Gallery/mixer.png';
 import faqIcon from '../../Gallery/pngwing.com.png';
 
 const ProfileTabs = ({ activeTab, setActiveTab }) => {
@@ -14,6 +14,20 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
         { name: "About", icon: aboutIcon },
         { name: "FAQ", icon: faqIcon }
     ];
+        
+        useEffect(() => {
+            const handleResize = () => {
+                if (window.innerWidth <= 768) {
+                    import('./tabs-mobile.css').then(() => {
+                        console.log('Mobile CSS for header loaded');
+                    });
+                }
+            };
+            handleResize(); // Check on initial load
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }, []);
+
 
     return (
         <div className="tabs-container">

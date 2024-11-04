@@ -1,15 +1,101 @@
+/* Global Body Styles */
 body {
   margin: 0;
   padding: 0;
   background-color: #e8b634;
-  font-family: sans-serif, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  color: #333; /* Default text color for readability */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Code Block Styling */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background-color: #f4f4f4; /* Light background for code blocks */
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: #d14; /* A slight color for better visibility */
+}
+
+/* Link Styling */
+a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+
+
+/* Button Reset and Styling */
+button {
+  font-family: inherit;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+/* Container Padding */
+.container {
+  padding: 0 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+/* Responsive Text Sizes */
+h1 {
+  font-size: clamp(1.5rem, 2.5vw, 3rem);
+  margin: clamp(1rem, 2vw, 2rem) 0; /* Responsive margins */
+}
+
+h2 {
+  font-size: clamp(1.25rem, 2vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 1.5vw, 2rem);
+}
+
+p {
+  font-size: clamp(0.9rem, 1vw, 1.1rem);
+  line-height: 1.6;
+  margin: clamp(0.75rem, 1.5vw, 1.5rem) 0;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  body {
+    padding: clamp(5px, 2vw, 10px);
+  }
+
+  button {
+    padding: clamp(8px, 2vw, 15px) clamp(12px, 3vw, 20px);
+    font-size: clamp(0.9rem, 1vw, 1rem);
+  }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 clamp(15px, 3vw, 30px);
+  }
 }

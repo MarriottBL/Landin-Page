@@ -1,7 +1,17 @@
 .App {
     font-family: "Arial", sans-serif;
     text-align: center;
-    padding-bottom: 56px;
+    padding-bottom: clamp(56px, 8vh, 80px);
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Global Container */
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(15px, 2vw, 30px);
 }
 
 

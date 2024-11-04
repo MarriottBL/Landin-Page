@@ -1,83 +1,94 @@
-/* Header Background adjustments for Mobile */
+/* Header Background */
 .header-background {
     height: 200px;
     background: linear-gradient(to bottom, #001831 70%, #e8b634 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
 }
 
-/* Overlapping Box adjustments */
+
+/* Overlapping Box */
 .overlapping-box {
-    top: 160px;
-    width: 90%;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    margin: 0 auto;
+    position: relative;
+    top: -50px;
+    width: 92%;
+    border-radius: 12px;
+    margin: 0 auto ;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-right: 10%;
+    z-index: 1;
 }
 
-/* Profile Image Wrapper adjustments for Mobile */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Profile Image Wrapper */
 .profile-image-wrapper {
-    top: -70px;
-    width: 120px;
-    height: 120px;
+    position: fixed;
+    top: -50px;
+    width: 100px;
+    height: 100px;
     margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* Social Media Icon Styling for Mobile */
+/* Social Media Section */
 .top-right-section {
-    top: 10px;
-    right: 15px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
     display: flex;
-    gap: 10px;
-    justify-content: flex-end;
+    gap: 15px;
+    z-index: 10;
 }
 
 .icon {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
 }
 
-.social-media-icons a {
-    font-size: 1.2rem;
-}
-
-/* Registration Button */
-.registration-link {
-    padding: 10px 15px;
-    font-size: 0.9rem;
-}
-
-/* Profile Content Styling */
+/* Profile Content */
 .profile-content {
-    margin-top: 60px;
-    padding: 0 15px;
+    margin-top: 20px;
+    padding: 0 20px;
     text-align: center;
 }
 
 .profile-content h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
 }
 
 .profile-content h4 {
-    font-size: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
 }
 
 .profile-content p {
-    font-size: 0.9rem;
-    max-width: 90%;
-    line-height: 1.4;
-    margin: 15px 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 15px auto;
+    max-width: 100%;
 }
 
-/* Center the Tab Icons Container */
+/* Tab Icons */
 .tab-icons {
     display: flex;
-    justify-content: center; /* Center align icons */
+    justify-content: center;
     gap: 15px;
     padding: 15px 0;
+    flex-wrap: wrap;
 }
 
 .tab-icons .tab-icon {
@@ -86,7 +97,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 0.8rem;
 }
 
 .tab-icons .tab-icon img {
@@ -100,72 +110,40 @@
     text-align: center;
 }
 
-/* Portrait Mode Adjustments */
-@media only screen and (max-width: 768px) and (orientation: portrait) {
+/* Tablet Styles */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
     .header-background {
-        height: 180px;
+        height: 220px;
     }
 
     .overlapping-box {
-        top: 140px;
-        width: 95%;
+        width: 90%;
+        top: -70px;
     }
 
     .profile-image-wrapper {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-content {
+        margin-top: -20px;
     }
 
     .profile-content h2 {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
 
     .profile-content h4 {
-        font-size: 0.9rem;
+        font-size: 1.3rem;
     }
 
-    .tab-icons .tab-icon {
-        width: 45px;
-        height: 45px;
+    .profile-content p {
+        font-size: 1rem;
     }
 
-    .tab-icons .tab-icon img {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-/* Landscape Mode Adjustments */
-@media only screen and (max-width: 768px) and (orientation: landscape) {
-    .header-background {
-        height: 150px;
-    }
-
-    .overlapping-box {
-        top: 120px;
-        width: 85%;
-    }
-
-    .profile-image-wrapper {
-        width: 90px;
-        height: 90px;
-    }
-
-    .profile-content h2 {
-        font-size: 1.2rem;
-    }
-
-    .profile-content h4 {
-        font-size: 0.8rem;
-    }
-
-    .tab-icons .tab-icon {
-        width: 40px;
-        height: 40px;
-    }
-
-    .tab-icons .tab-icon img {
-        width: 20px;
-        height: 20px;
+    .icon {
+        width: 35px;
+        height: 35px;
     }
 }

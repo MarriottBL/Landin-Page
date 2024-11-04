@@ -1,0 +1,96 @@
+/* Container for the Tabs - Mobile Adjustments */
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: clamp(8px, 2vw, 20px);
+    margin: clamp(15px, 3vw, 30px) 0;
+    flex-wrap: wrap;
+    padding: 0 clamp(10px, 2vw, 20px);
+}
+
+/* General Tab Styles */
+.tab {
+    width: clamp(45px, 8vw, 80px);
+    height: clamp(55px, 10vw, 90px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect for Tabs */
+.tab:hover {
+    background-color: #e8b634;
+}
+
+/* General Tab Icon Styles */
+.tab-icon {
+    width: clamp(25px, 5vw, 40px);
+    height: clamp(25px, 5vw, 40px);
+    object-fit: contain;
+}
+
+/* Active Tab Styles */
+.tab-active {
+    background-color: #e8b634;
+}
+
+/* Inactive Icon Styles */
+.tab img {
+    filter: grayscale(100%);
+}
+
+/* Active Icon Styles */
+.tab-active img {
+    filter: none;
+}
+
+/* Tab Label Styling */
+.tab-label {
+    margin-top: 5px;
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    color: #333;
+    text-align: center;
+}
+
+/* Portrait Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    .tab {
+        width: 45px;
+        height: 55px;
+    }
+
+    .tab-icon {
+        width: 30px;
+        height: 25px;
+    }
+
+    .tab-label {
+        font-size: 0.7rem;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .tabs-container {
+        gap: 8px; /* Reduce gap even further for landscape */
+    }
+
+    .tab {
+        width: 40px;
+        height: 50px;
+    }
+
+    .tab-icon {
+        width: 25px;
+        height: 20px;
+    }
+
+    .tab-label {
+        font-size: 0.65rem;
+    }
+}

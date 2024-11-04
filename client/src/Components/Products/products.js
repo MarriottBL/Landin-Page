@@ -8,6 +8,19 @@ const Gallery = () => {
         fetchProducts();
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                import('./products-gallery-mobile.css').then(() => {
+                    console.log('Mobile CSS for header loaded');
+                });
+            }
+        };
+        handleResize(); // Check on initial load
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const fetchProducts = async () => {
         try {
             const apiUrl = `${process.env.REACT_APP_API_URL}/api/products`;

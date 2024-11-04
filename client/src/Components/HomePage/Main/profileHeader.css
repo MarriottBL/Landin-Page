@@ -43,26 +43,44 @@
     /* Top-right section (social media + registration) */
     .top-right-section {
         position: absolute;
-        top: 15px; /* Distance from the top */
-        right: 200px; /* Distance from the right */
+        top: 15px;
+        right: 15px;
         display: flex;
         align-items: center;
-        z-index: 15; /* Ensure this stays above header but below modal */
-
+        gap: 8px;
+        z-index: 15;
     }
 
-    /* Social Media Icon Styling */
+    /* Social Media Icons Container */
+    .social-media-icons {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* Common icon styling */
     .icon {
+        width: 35px; /* Increased base size */
+        height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px; /* Set width for uniform size */
-        height: 40px; /* Set height for uniform size */
-        border-radius: 50%;
-        overflow: hidden; /* Clip image inside */
-        transition: background-color 0.3s ease;
+        transition: transform 0.3s ease;
     }
-    
+
+    /* Instagram specific sizing */
+    .fa-instagram {
+        width: 35px; /* Increased to match others */
+        height: 35px;
+        scale: 1.2; /* Slightly scale up the Instagram icon */
+    }
+
+    /* Facebook icon */
+    .fa-facebook {
+        width: 35px;
+        height: 35px;
+    }
+
     /* Social media icons */
     .social-media-icons a {
         color: #2a86aa;
@@ -84,19 +102,22 @@
         width: 25px;
     }
     
-    /* Registration link */
+    /* Registration link/icon */
     .registration-link {
+        color: #3d8754;
+        padding: 0;
         display: flex;
         align-items: center;
-        color: #fff;
-        padding: 30px 20px;
+        justify-content: center;
         text-decoration: none;
-        transition: background-color 0.3s ease;
+        background: none;
+        border: none;
+        height: 35px;
     }
     
     .register-icon {
-        width: 20px; /* Adjust icon size as needed */
-        margin-right: 1px; /* Space between icon and text */
+        width: 35px;
+        height: 35px;
     }
 
     /* Ensures the profile image fits well */
@@ -165,5 +186,35 @@
     @media (max-width: 768px) {
         .overlapping-box {
             width: 90%;
+        }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+        .top-right-section {
+            top: 10px;
+            right: 10px;
+            gap: 6px;
+        }
+
+        .social-media-icons {
+            gap: 6px;
+        }
+
+        /* Keep all icons the same size on mobile */
+        .icon,
+        .fa-instagram,
+        .fa-facebook,
+        .register-icon {
+            width: 30px; /* Slightly larger on mobile */
+            height: 30px;
+        }
+
+        .fa-instagram {
+            scale: 1.2; /* Maintain scale on mobile */
+        }
+
+        .registration-link {
+            height: 30px;
         }
     }

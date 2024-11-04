@@ -1,17 +1,50 @@
-    .order-now-btn {
-        padding: 10px 20px;
-        background-color: #28a745; /* Green color to match the theme */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: clamp(1.5rem, 2vw + 1rem, 3.5rem);
-        transition: background-color 0.3s ease;
+/* Add keyframes for the blinking animation */
+@keyframes blink {
+    0% {
+        background-color: #28a745;
+        transform: scale(1);
+        box-shadow: none;
     }
+    50% {
+        background-color: #ffc107;
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+    }
+    100% {
+        background-color: #28a745;
+        transform: scale(1);
+        box-shadow: none;
+    }
+}
 
-    .order-now-btn:hover {
-        background-color: #218838; /* Slightly darker green on hover */
-    }
+.order-now-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: clamp(1.5rem, 2vw + 1rem, 3.5rem);
+    transform: scale(1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Animation trigger class */
+.order-now-btn.blinking {
+    animation: blink 0.5s ease-in-out 3;
+}
+
+/* After animation completes, ensure button returns to normal */
+.order-now-btn:not(.blinking) {
+    transform: scale(1);
+    background-color: #28a745;
+}
+
+/* Pause animation on hover */
+.order-now-btn:hover {
+    background-color: #218838;
+    animation-play-state: paused;
+}
 
 
     /* Custom dialog styles using Material-UI default class */

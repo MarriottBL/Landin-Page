@@ -33,9 +33,9 @@ body {
 /* Profile Image Wrapper */
 .profile-image-wrapper {
     position: fixed;
-    top: -50px;
-    width: 100px;
-    height: 100px;
+    top: -60px;
+    width: 125px;
+    height: 110px;
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;

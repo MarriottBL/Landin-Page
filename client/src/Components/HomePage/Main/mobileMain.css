@@ -1,7 +1,7 @@
 /* Header Background */
 .header-background {
     height: 200px;
-    background: linear-gradient(to bottom, #001831 70%, #e8b634 100%);
+    background: linear-gradient(to bottom, #001831 70%, #f9f38c 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +9,6 @@
     position: relative;
     width: 100%;
 }
-
 
 /* Overlapping Box */
 .overlapping-box {
@@ -33,9 +32,9 @@ body {
 /* Profile Image Wrapper */
 .profile-image-wrapper {
     position: fixed;
-    top: -60px;
-    width: 125px;
-    height: 110px;
+    top: -70px;
+    width: 135px;
+    height: 120px;
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
@@ -46,7 +45,7 @@ body {
 .top-right-section {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: -40px;
     display: flex;
     gap: 15px;
     z-index: 10;

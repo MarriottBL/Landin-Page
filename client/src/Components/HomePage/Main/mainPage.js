@@ -45,7 +45,7 @@ const ProfilePage = () => {
         <div className="overlapping-box">
             <div className="profile-image-wrapper">
             <img
-            src={require("../../Gallery/logo.jpg")}
+            src={require("../../Gallery/Tropical_Baking_Sweets_Logo 3.png")}
             alt="profile"
             className="profile-image"
             />

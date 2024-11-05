@@ -1,5 +1,5 @@
     .header-background {
-        background: linear-gradient(to bottom, #001831 70%, #e8b634 100%); /* or use your background image */
+        background: linear-gradient(to bottom, #001831 70%, #f9f38c 100%); /* or use your background image */
         width: 100vw;
         height: 300px;
         display: flex;
@@ -27,13 +27,13 @@
 
     /* Profile image wrapper to handle overlap */
     .profile-image-wrapper {
-        position: absolute;
+        position: fixed;
         top: -90px; /* Adjust to overlap */
         left: 50%;
         transform: translateX(-50%);
         border-radius: 50%;
-        width: 180px;
-        height: 180px;
+        width: 235px;
+        height: 210px;
         overflow: hidden;
         border: 0px solid #fff;
         background-color: #fff;
@@ -43,19 +43,21 @@
     /* Top-right section (social media + registration) */
     .top-right-section {
         position: absolute;
-        top: 15px;
-        right: 15px;
+        top: 25px;
+        right: 100px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 15px;
         z-index: 15;
+        margin-right: 95px;
     }
 
     /* Social Media Icons Container */
     .social-media-icons {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 15px;
+        margin-right: 5px;
     }
 
     /* Common icon styling */
@@ -77,8 +79,8 @@
 
     /* Facebook icon */
     .fa-facebook {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 29px;
     }
 
     /* Social media icons */
@@ -97,10 +99,6 @@
     .fa-instagram{
         width: 30px;
     }
-
-    .fa-facebook{
-        width: 25px;
-    }
     
     /* Registration link/icon */
     .registration-link {
@@ -116,8 +114,8 @@
     }
     
     .register-icon {
-        width: 35px;
-        height: 35px;
+        width: 29px;
+        height: 30px;
     }
 
     /* Ensures the profile image fits well */
@@ -206,7 +204,7 @@
         .fa-instagram,
         .fa-facebook,
         .register-icon {
-            width: 30px; /* Slightly larger on mobile */
+            width: 20px; /* Slightly larger on mobile */
             height: 30px;
         }
 
@@ -217,4 +215,9 @@
         .registration-link {
             height: 30px;
         }
+    }
+
+    /* Optional: if you need to adjust the ORDER NOW button specifically */
+    .order-now-button {
+        margin-left: 15px;
     }

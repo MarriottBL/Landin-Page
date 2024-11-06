@@ -4,6 +4,19 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config();// Import environment variables from.env file
 
+// Ensure uploads directories exist
+const fs = require('fs');
+const uploadsDir = path.join(__dirname, '../Uploads');
+const productsDir = path.join(__dirname, '../Uploads/Products');
+const calendarDir = path.join(__dirname, '../Uploads/Calendar');
+
+// Create directories if they don't exist
+[uploadsDir, productsDir, calendarDir].forEach(dir => {
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+    }
+});
+
 const app = express();
 
 // Middleware

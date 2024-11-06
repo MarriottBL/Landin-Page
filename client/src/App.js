@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-// import Admin from "./Admin/admin";
+import Admin from "./Admin/admin";
 import './App.css';
 import ProfilePage from "./Components/HomePage/Main/mainPage";
 
@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<ProfilePage />} />
-        {/* <Route  path="/admin" element={<Admin />} /> */}
+        <Route  path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   </div>

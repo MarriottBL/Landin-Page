@@ -1,6 +1,7 @@
 // productmiddleware.js
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 // Define the upload path without creating it initially
 const productUploadPath = path.join(__dirname, '../../Uploads/Products');
@@ -19,6 +20,20 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 5000000 }, // 5MB limit
+    fileFilter: function (req, file, cb) {
+        const filetypes = /jpeg|jpg|png|gif/;
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = filetypes.test(file.mimetype);
+
+        if (mimetype && extname) {
+            return cb(null, true);
+        } else {
+            cb(new Error('Error: Images Only!'));
+        }
+    }
+});
 
 module.exports = upload;

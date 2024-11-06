@@ -1,97 +1,221 @@
-// import axios from 'axios';
-// import React, { useEffect, useState } from 'react';
-// import { createProduct, updateProduct } from '../Api/productsApi';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { validateProduct } from '../utils/validation';
 
-// const AdminProductForm = ({ editMode, productToEdit, onSuccess }) => {
-//     const [name, setName] = useState('');
-//     const [description, setDescription] = useState('');
-//     const [price, setPrice] = useState('');
-//     const [category, setCategory] = useState('');
-//     const [imageUrl, setImageUrl] = useState('');
-//     const [imageOptions, setImageOptions] = useState([]);
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
-//     useEffect(() => {
-//         fetchImages();
-//     }, []);
+const AdminProductForm = ({ editMode, productToEdit, onSuccess }) => {
+    const [formData, setFormData] = useState({
+        name: '',
+        description: '',
+        price: '',
+        category: '',
+        image: null
+    });
+    const [formErrors, setFormErrors] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
+    const [imagePreview, setImagePreview] = useState(null);
 
-//     useEffect(() => {
-//         if (editMode && productToEdit) {
-//             setName(productToEdit.name);
-//             setDescription(productToEdit.description);
-//             setPrice(productToEdit.price);
-//             setCategory(productToEdit.category);
-//             setImageUrl(productToEdit.imageUrl);
+    useEffect(() => {
+        if (editMode && productToEdit) {
+            const imageUrl = productToEdit.imageUrl.startsWith('http')
+                ? productToEdit.imageUrl
+                : `${API_URL}${productToEdit.imageUrl}`;
             
-//         } else {
-//             resetForm();
-//         }
-//     }, [editMode, productToEdit]);
+            setFormData({
+                name: productToEdit.name || '',
+                description: productToEdit.description || '',
+                price: productToEdit.price || '',
+                category: productToEdit.category || '',
+                image: null
+            });
+            setImagePreview(imageUrl);
+        } else {
+            setFormData({
+                name: '',
+                description: '',
+                price: '',
+                category: '',
+                image: null
+            });
+            setImagePreview(null);
+        }
+    }, [editMode, productToEdit]);
 
-//     const fetchImages = async () => {
-//         try {
-//             const response = await axios.get('http://localhost:8000/api/images');
-//             setImageOptions(response.data);
-//         } catch (error) {
-//             console.error('Error fetching images:', error);
-//         }
-//     };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+        if (formErrors[name]) {
+            setFormErrors(prev => ({
+                ...prev,
+                [name]: null
+            }));
+        }
+    };
 
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         const newProduct = { name, description, price, category, imageUrl };
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFormData(prev => ({
+                ...prev,
+                image: file
+            }));
+            
+            const previewUrl = URL.createObjectURL(file);
+            setImagePreview(previewUrl);
+            
+            if (formErrors.image) {
+                setFormErrors(prev => ({
+                    ...prev,
+                    image: null
+                }));
+            }
+        }
+    };
 
-//         try {
-//             if (editMode) {
-//                 await updateProduct(productToEdit._id, newProduct);
-//                 alert('Product updated successfully!');
-//             } else {
-//                 await createProduct(newProduct);
-//                 alert('Product added successfully!');
-//             }
-//             resetForm();
-//             onSuccess();
-//         } catch (error) {
-//             console.error('Error handling product:', error);
-//             alert('Failed to add/update product. Please try again.');
-//         }
-//     };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        const errors = validateProduct({ ...formData, editMode });
+        if (Object.keys(errors).length > 0) {
+            setFormErrors(errors);
+            return;
+        }
 
-//     const resetForm = () => {
-//         setName('');
-//         setDescription('');
-//         setPrice('');
-//         setCategory('');
-//         setImageUrl('');
-//     };
+        setIsLoading(true);
+        
+        const submitData = new FormData();
+        if (formData.image || !editMode) {
+            submitData.append('image', formData.image);
+        }
+        submitData.append('name', formData.name);
+        submitData.append('description', formData.description);
+        submitData.append('price', formData.price);
+        submitData.append('category', formData.category);
 
-//     return (
-//         <form onSubmit={handleSubmit} className="admin-product-form">
-//             <h2>{editMode ? 'Edit Product' : 'Add a New Product'}</h2>
-//             <label>Product Name:</label>
-//             <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                }
+            };
 
-//             <label>Description:</label>
-//             <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+            const url = editMode 
+                ? `${API_URL}/api/products/edit/${productToEdit._id}`
+                : `${API_URL}/api/products/add`;
+            
+            const method = editMode ? 'put' : 'post';
+            
+            await axios[method](url, submitData, config);
+            alert(editMode ? 'Product updated successfully!' : 'Product added successfully!');
+            resetForm();
+            onSuccess();
+        } catch (error) {
+            alert(error.response?.data?.message || 'Failed to save product');
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
-//             <label>Price:</label>
-//             <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required />
+    const resetForm = () => {
+        setFormData({
+            name: '',
+            description: '',
+            price: '',
+            category: '',
+            image: null
+        });
+        setImagePreview(null);
+        setFormErrors({});
+    };
 
-//             <label>Category:</label>
-//             <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
+    return (
+        <form onSubmit={handleSubmit} className="admin-form">
+            <h2>{editMode ? 'Edit Product' : 'Add New Product'}</h2>
+            
+            <div className="form-group">
+                <label>Product Name:</label>
+                <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className={formErrors.name ? 'error' : ''}
+                />
+                {formErrors.name && <span className="error-message">{formErrors.name}</span>}
+            </div>
 
-//             <label>Image URL:</label>
-//             <select value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required>
-//                 <option value="">Select an Image</option>
-//                 {imageOptions.map((image, index) => (
-//                     <option key={index} value={`/ProductGallery/${image}`}>
-//                         {image}
-//                     </option>
-//                 ))}
-//             </select>
+            <div className="form-group">
+                <label>Description:</label>
+                <textarea
+                    name="description"
+                    value={formData.description}
+                    onChange={handleInputChange}
+                />
+            </div>
 
-//             <button type="submit">{editMode ? 'Update Product' : 'Add Product'}</button>
-//         </form>
-//     );
-// };
+            <div className="form-group">
+                <label>Price:</label>
+                <input
+                    type="number"
+                    name="price"
+                    min="0"
+                    step="0.01"
+                    value={formData.price}
+                    onChange={handleInputChange}
+                    className={formErrors.price ? 'error' : ''}
+                />
+                {formErrors.price && <span className="error-message">{formErrors.price}</span>}
+            </div>
 
-// export default AdminProductForm;
+            <div className="form-group">
+                <label>Category:</label>
+                <input
+                    type="text"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleInputChange}
+                />
+            </div>
+
+            <div className="form-group">
+                <label>Image:</label>
+                <input
+                    type="file"
+                    onChange={handleImageChange}
+                    accept="image/*"
+                    className={formErrors.image ? 'error' : ''}
+                />
+                {formErrors.image && <span className="error-message">{formErrors.image}</span>}
+                {imagePreview && (
+                    <div className="image-preview">
+                        <img 
+                            src={imagePreview.startsWith('blob:') || imagePreview.startsWith('http') 
+                                ? imagePreview 
+                                : `${API_URL}${imagePreview}`}
+                            alt="Preview" 
+                            style={{ 
+                                maxWidth: '200px',
+                                maxHeight: '200px',
+                                objectFit: 'contain',
+                                marginTop: '10px'
+                            }} 
+                        />
+                    </div>
+                )}
+            </div>
+
+            <button type="submit" disabled={isLoading}>
+                {isLoading 
+                    ? 'Saving...' 
+                    : (editMode ? 'Update Product' : 'Add Product')
+                }
+            </button>
+        </form>
+    );
+};
+
+export default AdminProductForm;

@@ -1,135 +1,120 @@
 .products-gallery {
-  display: grid;
-  grid-template-columns: repeat(22, 2fr);
-  grid-auto-rows: 100px; /* Set default row height */
-  gap: 20px; /* Spacing between images */
-  max-width: 1000px; /* Adjust max-width to better fit two-column layout */
-  margin: 0 auto; /* Center the gallery on the page */
-  padding: 20px; /* Padding around the gallery */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Individual product image container */
-.img {
-  position: relative; /* Allow for better control over image positioning */
-  overflow: hidden; /* Ensures images fit nicely in their containers */
+/* Individual product card */
+.product-card {
+    aspect-ratio: 1/1; /* Maintain square ratio */
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-/* Styling for the images */
-.img img {
-  width: 100%;
-  height: 100%; /* Keep the aspect ratio */
-  object-fit: cover; /* Ensure images fit nicely in their container */
-  display: block;
-  border-radius: 10px; /* Add slight rounding to the corners */
-}
-
-/* Specific classes for different sizes for each img */
+/* Make specific images larger */
 .img-1 {
-  grid-column: span 11;
-  grid-row: span 2;
+    grid-column: span 1;
+    grid-row: span 1;
 }
 
 .img-2 {
-  grid-column: span 11;
-  grid-row: span 3;
+    grid-column: span 1;
+    grid-row: span 1;
 }
 
 .img-3 {
-  grid-column: span 11;
-  grid-row: span 3;
+    grid-column: span 1;
+    grid-row: span 1;
 }
 
-.img-4 {
-  grid-column: span 11;
-  grid-row: span 3;
-}
-
-.img-5 {
-  grid-column: span 11;
-  grid-row: span 3;
-}
-
-.img-6 {
-  grid-column: span 11;
-  grid-row: span 2;
-}
-
+/* Make the last image span full width */
 .img-7 {
-  grid-column: span 22;
-  grid-row: span 3;
+    grid-column: 1 / -1; /* Span all columns */
+    aspect-ratio: 16/9; /* Different aspect ratio for the full-width image */
 }
 
-
-/* Medium screens (tablets) */
-@media (max-width: 1024px) {
-  .products-gallery {
-      grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-  }
-}
-
-/* Small screens (mobile) */
-@media (max-width: 768px) {
-  .products-gallery {
-      grid-template-columns: repeat(2, 1fr); /* 2 items per row */
-  }
-}
-
-@media (max-width: 480px) {
-  .products-gallery {
-      grid-template-columns: 1fr; /* 1 item per row */
-  }
-}
-
-
-/* Flip Effect */
-.product-card {
-  perspective: 1000px; /* Perspective for 3D effect */
-}
+/* Card inner structure */
 .product-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
+/* Flip effect */
 .product-card:hover .product-card-inner {
-  transform: rotateY(180deg); /* Flip effect on hover */
+    transform: rotateY(180deg);
 }
 
-/* Front and back face of the card */
-.product-card-front, .product-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden; /* Hides the back face when not visible */
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden;
-}
-
-/* Styling for the front side of the card */
-.product-card-front {
-  background-size: cover;
-  background-position: center;
-}
-
-/* Styling for the back side of the card */
+/* Front and back of cards */
+.product-card-front, 
 .product-card-back {
-  background-color: #ffecb3; /* Light color for the back side */
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: rotateY(180deg); /* Flips the back side */
-  padding: 10px;
-  flex-direction: column;
-  font-size: clamp(1.5rem, 2vw + 1rem, 3.5rem);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-/* fall back image */
 .product-card-front {
-  background-size: cover;
-  background-position: center;
-  background-color: #f0f0f0; /* Fallback background color */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.product-card-back {
+    background-color: #ffecb3;
+    color: #333;
+    transform: rotateY(180deg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Product information styling */
+.product-card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.product-card-back p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .products-gallery {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .img-7 {
+        aspect-ratio: 1/1; /* Make it square on mobile */
+    }
+
+    .product-card-back h3 {
+        font-size: 1.2rem;
+    }
+
+    .product-card-back p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Ensure images fill their containers properly */
+.product-card-front {
+    background-size: cover;
+    background-position: center;
+    background-color: #f0f0f0;
 }

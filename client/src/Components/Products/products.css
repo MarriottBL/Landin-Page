@@ -1,120 +1,190 @@
 .products-gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(22, 2fr);
+  grid-auto-rows: 100px; /* Set default row height */
+  gap: 20px; /* Spacing between images */
+  max-width: 1000px; /* Adjust max-width to better fit two-column layout */
+  margin: 0 auto; /* Center the gallery on the page */
+  padding: 20px; /* Padding around the gallery */
 }
 
-/* Individual product card */
-.product-card {
-    aspect-ratio: 1/1; /* Maintain square ratio */
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
+/* Individual product image container */
+.img {
+  position: relative; /* Allow for better control over image positioning */
+  overflow: hidden; /* Ensures images fit nicely in their containers */
 }
 
-/* Make specific images larger */
+/* Styling for the images */
+.img img {
+  width: 100%;
+  height: 100%; /* Keep the aspect ratio */
+  object-fit: cover; /* Ensure images fit nicely in their container */
+  display: block;
+  border-radius: 10px; /* Add slight rounding to the corners */
+}
+
+/* Specific classes for different sizes for each img */
 .img-1 {
-    grid-column: span 1;
-    grid-row: span 1;
+  grid-column: span 11;
+  grid-row: span 2;
 }
 
 .img-2 {
-    grid-column: span 1;
-    grid-row: span 1;
+  grid-column: span 11;
+  grid-row: span 3;
 }
 
 .img-3 {
-    grid-column: span 1;
-    grid-row: span 1;
+  grid-column: span 11;
+  grid-row: span 3;
 }
 
-/* Make the last image span full width */
+.img-4 {
+  grid-column: span 11;
+  grid-row: span 3;
+}
+
+.img-5 {
+  grid-column: span 11;
+  grid-row: span 3;
+}
+
+.img-6 {
+  grid-column: span 11;
+  grid-row: span 2;
+}
+
 .img-7 {
-    grid-column: 1 / -1; /* Span all columns */
-    aspect-ratio: 16/9; /* Different aspect ratio for the full-width image */
+  grid-column: span 22;
+  grid-row: span 3;
 }
 
-/* Card inner structure */
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .products-gallery {
+      grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .products-gallery {
+      grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .products-gallery {
+      grid-template-columns: 1fr; /* 1 item per row */
+  }
+}
+
+
+/* Flip Effect */
+.product-card {
+  perspective: 1000px; /* Perspective for 3D effect */
+}
 .product-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
 
-/* Flip effect */
 .product-card:hover .product-card-inner {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg); /* Flip effect on hover */
 }
 
-/* Front and back of cards */
-.product-card-front, 
-.product-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    overflow: hidden;
+/* Front and back face of the card */
+.product-card-front, .product-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hides the back face when not visible */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden;
 }
 
+/* Styling for the front side of the card */
 .product-card-front {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
+/* Styling for the back side of the card */
 .product-card-back {
-    background-color: #ffecb3;
-    color: #333;
-    transform: rotateY(180deg);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background-color: #ffecb3;
+  color: #333;
+  transform: rotateY(180deg);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: auto;
 }
 
 /* Product information styling */
 .product-card-back h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  margin-bottom: 4px;
+  font-weight: 600;
+  padding: 0 4px;
 }
 
-.product-card-back p {
-    font-size: 1rem;
-    margin: 5px 0;
+.product-card-back .price {
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-weight: 600;
+  color: #001831;
+  margin: 2px 0;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .products-gallery {
-        grid-template-columns: 1fr; /* Single column on mobile */
-        gap: 15px;
-        padding: 15px;
-    }
-
-    .img-7 {
-        aspect-ratio: 1/1; /* Make it square on mobile */
-    }
-
-    .product-card-back h3 {
-        font-size: 1.2rem;
-    }
-
-    .product-card-back p {
-        font-size: 0.9rem;
-    }
+.product-card-back .description {
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  text-align: center;
+  padding: 0 6px;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Ensure images fill their containers properly */
+/* Specific adjustments for smaller grid items */
+.img-1 .product-card-back,
+.img-6 .product-card-back {
+  padding: 6px;
+}
+
+.img-1 .product-card-back h3,
+.img-6 .product-card-back h3 {
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  margin-bottom: 2px;
+}
+
+.img-1 .product-card-back .price,
+.img-6 .product-card-back .price {
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  margin: 1px 0;
+}
+
+.img-1 .product-card-back .description,
+.img-6 .product-card-back .description {
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+/* fall back image */
 .product-card-front {
-    background-size: cover;
-    background-position: center;
-    background-color: #f0f0f0;
+  background-size: cover;
+  background-position: center;
+  background-color: #f0f0f0; /* Fallback background color */
 }

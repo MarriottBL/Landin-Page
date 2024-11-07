@@ -56,8 +56,8 @@ const Gallery = () => {
                     {/* Back of the card displaying product information */}
                     <div className="product-card-back">
                         <h3>{product.name}</h3>
-                        <p><strong>Price:</strong> ${product.price}</p>
-                        <p>{product.description}</p>
+                        <p className="price">${product.price}</p>
+                        <p className="description">{product.description}</p>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@ const AboutMe = () => {
             Welcome to Tropical Baking Sweets! </p>
             <p>
             I’m Jennifer, the heart and hands behind our delicious creations. After dedicating 8 years as a special education teacher, I decided to turn my passion for baking into a full-time venture, and that's how Tropical Baking Sweets was born. We specialize in crafting Puerto Rican-style cakes, New York-style cookies, flan, tembleque, arroz con dulce, cupcakes, polvorones, quesitos, guava pastelillos, limbers, and more, all with a touch of love and tradition.
-            Based in Lake Stevens, WA, we’re proud to bring the sweet flavors of the Caribbean to our community. We offer delivery to surrounding areas including Everett, Marysville, Arlington, Mount Vernon, Mukilteo, Snohomish, Monroe, Granite Falls, Edmonds, Bothell, and Kirkland. We even have montly routes to Tacoma, Seattle and Bellevue to ensure you get your treats wherever you are.
+            Based in Lake Stevens, WA, we’re proud to bring the sweet flavors of the Caribbean to our community. We offer delivery to surrounding areas including Everett, Marysville, Arlington, Mount Vernon, Mukilteo, Snohomish, Monroe, Granite Falls, Edmonds, Bothell, and Kirkland. We even have monthly routes to Tacoma, Seattle and Bellevue to ensure you get your treats wherever you are.
             Thank you for joining us on this journey. We can't wait to share the sweetness of Puerto Rico with you!
             </p>
         </div>

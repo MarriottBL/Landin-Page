@@ -7,7 +7,7 @@ const AboutMe = () => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
                 import('./mobileAb.css').then(() => {
-                    console.log('Mobile CSS for About loaded');
+                    
                 });
             }
         };

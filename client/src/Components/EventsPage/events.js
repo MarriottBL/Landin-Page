@@ -25,7 +25,7 @@ const CalendarView = () => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
                 import('./Calendar/mobileCa.css').then(() => {
-                    console.log('Mobile CSS for calendar loaded');
+                    
                 });
             }
         };

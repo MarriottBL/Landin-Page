@@ -19,7 +19,7 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
             const handleResize = () => {
                 if (window.innerWidth <= 768) {
                     import('./tabs-mobile.css').then(() => {
-                        console.log('Mobile CSS for header loaded');
+                        
                     });
                 }
             };

@@ -15,7 +15,7 @@ const ProfilePage = () => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
                 import('./mobileMain.css').then(() => {
-                    console.log('Mobile CSS for header loaded');
+                    
                 });
             }
         };

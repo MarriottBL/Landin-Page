@@ -13,7 +13,7 @@ const Questions = () => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
                 import('./mobileFaq.css').then(() => {
-                    console.log('Mobile CSS for FAQ loaded');
+                    
                 });
             }
         };

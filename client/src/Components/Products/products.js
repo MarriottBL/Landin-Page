@@ -12,7 +12,7 @@ const Gallery = () => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
                 import('./products-gallery-mobile.css').then(() => {
-                    console.log('Mobile CSS for header loaded');
+                    
                 });
             }
         };

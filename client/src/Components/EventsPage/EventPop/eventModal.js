@@ -11,7 +11,7 @@ const EventModal = ({ event, isOpen, onClose }) => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
                 import('./modalMobile.css').then(() => {
-                    console.log('Mobile CSS for modal loaded');
+                    
                 });
             }
         };

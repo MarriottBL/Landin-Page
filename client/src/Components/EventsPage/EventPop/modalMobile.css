@@ -7,6 +7,9 @@
     margin: 0 auto; /* Center align the modal */
     font-size: 0.9rem; /* Reduce font size slightly */
     border-radius: 10px; /* Slightly smaller border radius */
+    width: 95vw !important;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 /* Title adjustments */
@@ -80,4 +83,26 @@
         opacity: 1;
         transform: scale(1);
     }
+}
+
+/* Add these at the top */
+.image-container {
+    width: 100%;
+    max-height: 60vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-image {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+}
+
+/* Add this for better modal positioning */
+.MuiDialog-paper {
+    margin: 10px !important;
 }

@@ -58,8 +58,8 @@
     
     /* Event Style - Line appearance with better text visibility */
     .rbc-event {
-        background-color: #001831;
-        color: #fff;
+        background-color: #69ee65;
+        color: #ffffff;
         padding: 0 6px; /* More horizontal padding for text */
         border-radius: 2px;
         white-space: nowrap;
@@ -80,7 +80,7 @@
     }
 
     .rbc-event:hover {
-        background-color: #001831;
+        background-color: #69ee65;
         color: #fff;
         transform: scale(1.1);
         z-index: 1000;

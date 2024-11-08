@@ -1,9 +1,9 @@
 /* Calendar Wrapper Adjustments for Mobile */
 .rbc-calendar {
     max-width: 100%;
-    padding: 10px;
-    height: auto; /* Flexible height */
-    margin: 0 auto;
+    padding: 5px;
+    min-height: 400px; /* Add minimum height */
+    height: calc(100vh - 200px); /* Responsive height */
 }
 
 /* Toolbar - Adjusted for Mobile */
@@ -18,8 +18,11 @@
 
 /* Event Style Adjustments */
 .rbc-event {
-    font-size: 0.6em;
-    padding: 3px;
+    font-size: 0.7em;
+    padding: 2px;
+    margin: 1px 0;
+    height: auto;
+    min-height: 14px;
 }
 
 /* Calendar Cells Adjustments */
@@ -33,7 +36,14 @@
 
 /* Day/Month Labels */
 .rbc-header {
-    padding: 8px;
+    padding: 5px 2px;
+    font-size: 0.8rem;
+}
+
+/* Make dates more visible */
+.rbc-date-cell {
+    padding: 2px;
+    font-size: 0.9rem;
 }
 
 /* Portrait Mode Adjustments */
@@ -75,5 +85,77 @@
     }
     .rbc-day-bg, .rbc-header {
         padding: 5px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .rbc-toolbar {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .rbc-toolbar-label {
+        margin: 5px 0;
+    }
+}
+
+/* Only apply these styles for mobile devices */
+@media only screen and (max-width: 768px) {
+    .rbc-calendar {
+        max-width: 95vw;
+        aspect-ratio: 1 / 1 !important;
+        min-height: unset !important;
+        height: auto !important;
+        padding: 10px;
+    }
+
+    /* Adjust row heights for mobile square layout */
+    .rbc-month-row {
+        min-height: 0;
+        flex: 1;
+    }
+
+    .rbc-row-content {
+        min-height: 0;
+    }
+
+    /* Adjust event display for mobile */
+    .rbc-event {
+        font-size: 0.8em !important;
+        padding: 2px 4px !important;
+        height: auto !important;
+        min-height: 18px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: flex !important;
+        align-items: center !important;
+        background-color: #69ee65 !important;
+        color: white !important;
+        margin: 1px 0 !important;
+        border-radius: 3px !important;
+    }
+
+    /* Ensure event container has enough space */
+    .rbc-row-content {
+        min-height: 0;
+        padding: 1px 0;
+    }
+
+    /* Adjust cell sizing to accommodate events better */
+    .rbc-month-row {
+        min-height: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Improve date visibility */
+    .rbc-date-cell {
+        padding: 2px;
+        font-size: 0.8rem;
+        text-align: center;
     }
 }

@@ -34,26 +34,29 @@ const EventModal = ({ event, isOpen, onClose }) => {
         <Dialog open={isOpen} onClose={onClose} classes={{ paper: 'modal-dialog' }}>
             <DialogTitle className="modal-title">{event.title}</DialogTitle>
             <DialogContent className="modal-content">
-                    {calendarUrl && (
+                {calendarUrl && (
+                    <div className="image-container">
                         <img
-                        src={calendarUrl}
-                        alt={event.title}
-                        style={{
-                            width: '100%',
-                            height: 'auto',
-                            border: '2px solid black'
-                        }}
+                            src={calendarUrl}
+                            alt={event.title}
+                            className="event-image"
                         />
-                    )}
+                    </div>
+                )}
+                <div className="event-details">
+                    {event.description && <p>{event.description}</p>}
+                    {event.startTime && <p>Start: {event.startTime}</p>}
+                    {event.endTime && <p>End: {event.endTime}</p>}
+                </div>
             </DialogContent>
             <DialogActions className="modal-actions">
                 <Button onClick={onClose} color="primary" className="close-button">
-                Close
+                    Close
                 </Button>
             </DialogActions>
-            </Dialog>
-        );
-    };
+        </Dialog>
+    );
+};
     
 
 export default EventModal;

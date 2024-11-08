@@ -19,10 +19,11 @@ const AdminEventForm = () => {
         }
 
         try {
-            await axios.post('http://localhost:8080/api/calendar/add', formData, {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/calendar/add`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                }
+                },
+                withCredentials: true
             });
             
             alert('Event added successfully!');
@@ -89,4 +90,4 @@ const AdminEventForm = () => {
     );
 };
 
-export default AdminEventForm; 
+export default AdminEventForm;

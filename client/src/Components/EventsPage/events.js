@@ -8,8 +8,8 @@ import CustomCalendar from './Calendar/customCalendar';
 import EventModal from './EventPop/eventModal';
 
 const EventComponent = ({ event }) => (
-    <div>
-        <p>{event.title}</p>  {/* Display only the title */}
+    <div className="calendar-event">
+        <p>{event.title}</p>
     </div>
 );
 

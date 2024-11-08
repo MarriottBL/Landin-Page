@@ -1,93 +1,164 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addCalendar } from '../Components/EventsPage/Calendar/calendarSlice';
+import CalendarView from '../Components/EventsPage/events';
+import { Alert, Snackbar } from '@mui/material';
+import './admin.css';
 
-const AdminEventForm = () => {
-    const [title, setTitle] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [image, setImage] = useState(null);
+const EventAdmin = () => {
+    const dispatch = useDispatch();
+    const [formData, setFormData] = useState({
+        title: '',
+        start: '',
+        end: '',
+        image: null
+    });
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [imagePreview, setImagePreview] = useState(null);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFormData(prevState => ({
+                ...prevState,
+                image: file
+            }));
+            
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('start', startDate);
-        formData.append('end', endDate);
-        if (image) {
-            formData.append('image', image);
-        }
+        const data = new FormData();
+        data.append('title', formData.title);
+        data.append('start', formData.start);
+        data.append('end', formData.end);
+        data.append('image', formData.image);
 
         try {
-            await axios.post(`${process.env.REACT_APP_API_URL}/api/calendar/add`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-                withCredentials: true
+            await dispatch(addCalendar(data)).unwrap();
+            setOpenSnackbar(true);
+            // Reset form after successful submission
+            setFormData({
+                title: '',
+                start: '',
+                end: '',
+                image: null
             });
-            
-            alert('Event added successfully!');
-            resetForm();
+            setImagePreview(null);
+            // Reset file input
+            const fileInput = document.querySelector('input[type="file"]');
+            if (fileInput) fileInput.value = '';
         } catch (error) {
-            console.error('Error adding event:', error);
-            alert('Failed to add event. Please try again.');
+            console.error('Failed to add event:', error);
+        } finally {
+            setLoading(false);
         }
-    };
-
-    const resetForm = () => {
-        setTitle('');
-        setStartDate('');
-        setEndDate('');
-        setImage(null);
     };
 
     return (
-        <form onSubmit={handleSubmit} className="admin-form">
-            <h2>Add New Event</h2>
-            
-            <div className="form-group">
-                <label>Event Title:</label>
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
+        <div className="admin-page">
+            <div className="admin-form">
+                <h2>Add New Event</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="title">Event Title:</label>
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            value={formData.title}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="start">Start Date:</label>
+                        <input
+                            type="datetime-local"
+                            id="start"
+                            name="start"
+                            value={formData.start}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="end">End Date:</label>
+                        <input
+                            type="datetime-local"
+                            id="end"
+                            name="end"
+                            value={formData.end}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="image">Event Image:</label>
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            onChange={handleImageChange}
+                            accept="image/*"
+                            required
+                        />
+                        {imagePreview && (
+                            <div className="image-preview">
+                                <img src={imagePreview} alt="Preview" />
+                            </div>
+                        )}
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        disabled={loading}
+                    >
+                        {loading ? 'Adding Event...' : 'Add Event'}
+                    </button>
+                </form>
+
+                <Snackbar
+                    open={openSnackbar}
+                    autoHideDuration={6000}
+                    onClose={() => setOpenSnackbar(false)}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                >
+                    <Alert 
+                        onClose={() => setOpenSnackbar(false)} 
+                        severity="success"
+                        sx={{ width: '100%' }}
+                    >
+                        Event added successfully!
+                    </Alert>
+                </Snackbar>
             </div>
 
-            <div className="form-group">
-                <label>Start Date & Time:</label>
-                <input
-                    type="datetime-local"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    required
-                />
+            <div className="calendar-container">
+                <CalendarView />
             </div>
-
-            <div className="form-group">
-                <label>End Date & Time:</label>
-                <input
-                    type="datetime-local"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                    required
-                />
-            </div>
-
-            <div className="form-group">
-                <label>Event Image:</label>
-                <input
-                    type="file"
-                    onChange={(e) => setImage(e.target.files[0])}
-                    accept="image/*"
-                    required
-                />
-            </div>
-
-            <button type="submit">Add Event</button>
-        </form>
+        </div>
     );
 };
 
-export default AdminEventForm;
+export default EventAdmin;

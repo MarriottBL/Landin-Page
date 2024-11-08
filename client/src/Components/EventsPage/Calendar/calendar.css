@@ -59,24 +59,24 @@
     /* Event Style - Line appearance with better text visibility */
     .rbc-event {
         background-color: #69ee65;
-        color: #ffffff;
-        padding: 0 6px; /* More horizontal padding for text */
-        border-radius: 2px;
+        border: none;
+        margin: 1px 0;
+    }
+
+    .calendar-event {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .calendar-event p {
+        margin: 0;
+        font-size: 11px;
+        line-height: 1.2;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        margin: 2px 0;
-        font-size: 0.75em; /* Slightly larger font */
-        font-weight: 500; /* Medium font weight for better visibility */
-        transition: all 0.2s ease-in-out;
-        display: inline-flex;
-        align-items: center;
-        line-height: normal;
-        border: none;
-        width: auto;
-        max-width: max-content;
-        height: 16px;
-        letter-spacing: 0.2px; /* Improved letter spacing */
+        color: white;
+        font-weight: 500;
     }
 
     .rbc-event:hover {

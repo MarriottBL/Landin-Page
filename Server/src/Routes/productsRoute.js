@@ -6,7 +6,7 @@ const productUpload = require('../Middleware/productmiddleware'); // Import the 
 // Routes
 router.get('/', getProducts);
 router.post('/add', productUpload.single('image'), createProduct); // Use productUpload here
-router.put('/edit/:id', updateProduct);
+router.put('/edit/:id', productUpload.single('image'), updateProduct); // Add file upload middleware
 router.delete('/remove/:id', deleteProduct);
 
 module.exports = router;

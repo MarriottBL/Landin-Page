@@ -53,11 +53,31 @@ const createProduct = async (req, res) => {
 // PUT BY ID
 const updateProduct = async (req, res) => {
     try {
-        const updateProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!updateProduct) return res.status(404).send('Product not found');
-        res.send(updateProduct);
+        const updateData = {
+            name: req.body.name,
+            description: req.body.description,
+            price: parseFloat(req.body.price),
+            category: req.body.category
+        };
+
+        // If a new image is uploaded, update the imageUrl
+        if (req.file) {
+            updateData.imageUrl = `/uploads/products/${req.file.filename}`;
+        }
+
+        const updatedProduct = await Product.findByIdAndUpdate(
+            req.params.id,
+            updateData,
+            { new: true }
+        );
+
+        if (!updatedProduct) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        
+        res.json(updatedProduct);
     } catch (error) {
-        res.status(400).send(error.message);
+        res.status(400).json({ message: error.message });
     }
 }
 

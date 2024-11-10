@@ -12,6 +12,12 @@ const api = axios.create({
 
 export const getProducts = () => api.get('/api/products');
 export const createProduct = (product) => api.post('/api/products', product);
-export const updateProduct = (id, product) => api.put(`/api/products/${id}`, product);
+export const updateProduct = (id, formData) => {
+    return axios.put(`${baseURL}/api/products/edit/${id}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+};
 export const deleteProduct = (id) => api.delete(`/api/products/${id}`);
 

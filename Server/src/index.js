@@ -25,7 +25,7 @@ app.use(express.json());
 
 // CORS configuration
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://www.tropicalbakingsweets.com'],
+    origin: ['http://localhost:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     exposedHeaders: ['Content-Type', 'Authorization'],

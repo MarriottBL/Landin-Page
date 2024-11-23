@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Landin-Page/static/css/main.fc067eda.css",
-    "main.js": "/Landin-Page/static/js/main.c7739676.js",
+    "main.js": "/Landin-Page/static/js/main.c4581545.js",
     "static/css/606.a0867803.chunk.css": "/Landin-Page/static/css/606.a0867803.chunk.css",
     "static/js/606.092165d5.chunk.js": "/Landin-Page/static/js/606.092165d5.chunk.js",
     "static/css/561.4793f042.chunk.css": "/Landin-Page/static/css/561.4793f042.chunk.css",
@@ -38,7 +38,7 @@
     "static/media/fa-v4compatibility.woff2": "/Landin-Page/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "/Landin-Page/index.html",
     "main.fc067eda.css.map": "/Landin-Page/static/css/main.fc067eda.css.map",
-    "main.c7739676.js.map": "/Landin-Page/static/js/main.c7739676.js.map",
+    "main.c4581545.js.map": "/Landin-Page/static/js/main.c4581545.js.map",
     "606.a0867803.chunk.css.map": "/Landin-Page/static/css/606.a0867803.chunk.css.map",
     "606.092165d5.chunk.js.map": "/Landin-Page/static/js/606.092165d5.chunk.js.map",
     "561.4793f042.chunk.css.map": "/Landin-Page/static/css/561.4793f042.chunk.css.map",
@@ -57,6 +57,6 @@
   },
   "entrypoints": [
     "static/css/main.fc067eda.css",
-    "static/js/main.c7739676.js"
+    "static/js/main.c4581545.js"
   ]
 }

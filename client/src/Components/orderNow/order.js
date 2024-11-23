@@ -70,14 +70,14 @@ function Order() {
                 </IconButton>
 
                 <DialogContent className="modal-content">
-                    <p>Craving something sweet? Chat with us to place your order. Just tap a button below</p>
-                    <p>—we'll handle the rest!</p>
+                    <p> Ready to capture your moments? Reach out to us to book your photography session. Just tap a button below to get started!</p>
+                    <p>—let’s make your memories unforgettable!</p>
                 </DialogContent>
 
                 <DialogActions className="modal-actions">
                     <Button
                         component="a"
-                        href="https://m.me/100088704585145"
+                        href=" # "
                         target="_blank"
                         color="primary"
                         rel="noopener noreferrer"
@@ -88,7 +88,7 @@ function Order() {
                     </Button>
                     <Button
                         component="a"
-                        href="https://www.instagram.com/tropicalbakingsweets/"
+                        href=" # "
                         target="_blank"
                         color="primary"
                         rel="noopener noreferrer"
@@ -100,7 +100,7 @@ function Order() {
                     <Button
                         component="a"
                         color="primary"
-                        href="mailto:tropicalbakingsweets@gmail.com?subject=Order%20Inquiry&body=Hello%2C%20I%27d%20like%20to%20place%20an%20order."
+                        href=" # "
                         className="messenger-btn email"
                         startIcon={<EmailIcon />}
                     >

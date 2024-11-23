@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - REACT_APP_API_URL=https://tbs-back.up.railway.app
+      - REACT_APP_API_URL=
     depends_on:
       - backend
 
@@ -18,7 +18,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - MONGODB_CONNECTION_STRING=mongodb+srv://brandonlmarriott:Navin1992@tbs.ulxvp.mongodb.net/tbs?retryWrites=true&w=majority&appName=TBS
+      - MONGODB_CONNECTION_STRING=
       - FRONTEND_URL=http://localhost:3000
     depends_on:
       - mongo_db

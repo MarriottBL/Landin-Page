@@ -1,11 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import './products.css';
 
+// Dynamically import all images from the Gallery folder
+function importAll(r) {
+    return r.keys().map(r);
+}
+
+const images = importAll(require.context('./Gallery', false, /\.(png|jpe?g|svg)$/));
+
+
 const Gallery = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetchProducts();
+         // Simulate fetching products with local images
+            const fetchedProducts = images.map((image, index) => ({
+            id: index,
+            name: `Product ${index + 1}`,
+            price: (index + 1) * 10,
+            description: `Description for Product ${index + 1}`,
+            imageUrl: image,
+        }));
+        setProducts(fetchedProducts);
+        // fetchProducts();
     }, []);
 
     useEffect(() => {
@@ -21,16 +38,17 @@ const Gallery = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const fetchProducts = async () => {
-        try {
-            const apiUrl = `${process.env.REACT_APP_API_URL}/api/products`;
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            setProducts(data);
-        } catch (error) {
-            console.error("Error fetching products:", error);
-        }
-    };
+    //this is the fetchProducts function that would be used if we were fetching from the API
+    // const fetchProducts = async () => {
+    //     try {
+    //         const apiUrl = `${process.env.REACT_APP_API_URL}/api/products`;
+    //         const response = await fetch(apiUrl);
+    //         const data = await response.json();
+    //         setProducts(data);
+    //     } catch (error) {
+    //         console.error("Error fetching products:", error);
+    //     }
+    // };
 
     if (!products.length) {
         return <p>No products available</p>;
@@ -46,10 +64,11 @@ const Gallery = () => {
                     <div
                         className="product-card-front"
                         style={{
-                            
-                            backgroundImage: product.imageUrl
-                                ? `url(${process.env.REACT_APP_API_URL}${product.imageUrl})`
-                                : 'url(/path/to/placeholder/image.jpg)',
+                            backgroundImage: `url(${product.imageUrl})`,
+                            //this is how the images will be displayed if we were fetching from the API
+                            // backgroundImage: product.imageUrl
+                            //     ? `url(${process.env.REACT_APP_API_URL}${product.imageUrl})`
+                            //     : 'url(/path/to/placeholder/image.jpg)',
                         }}
                         
                     ></div>

@@ -24,28 +24,32 @@ const Questions = () => {
 
     const faqData = [
         {
-            question: "How can I place an order for my baked goods?",
-            answer: "It's simple. Just message us on Facebook, Instagram, or email and let us know what type of baked sweets you want.",
+            question: "How can I book a photography session?",
+            answer: "Booking a session is easy! Just message us on Instagram, Facebook, or send us an email with your preferred date and type of session.",
         },
         {
-            question: "What payment options are available?",
-            answer: "We accept PayPal, Venmo, Cash App, Zelle, Android Pay, Apple Pay, Visa, Mastercard, and American Express.",
+            question: "What types of photography do you specialize in?",
+            answer: "We specialize in portraits, event photography, landscapes, and creative storytelling photography.",
         },
         {
-            question: "What are the delivery options?",
-            answer: "We offer a range of delivery options, including half-point delivery, home delivery, and delivery to event venues. Each delivery option is priced differently based on distance.",
+            question: "What is your pricing for photography sessions?",
+            answer: "Pricing varies depending on the type of session and location. Contact us for a personalized quote based on your needs.",
         },
         {
-            question: "Is there a deposit for each order?",
-            answer: "Yes, a 50% deposit is required for all orders.",
+            question: "Do you offer event coverage or wedding photography?",
+            answer: "Yes, we provide full event coverage, including weddings, corporate events, and private parties. Contact us to discuss your event details.",
         },
         {
-            question: "Can I cancel my order?",
-            answer: "Yes, you can cancel your order, but you will lose your deposit, and the deposit cannot be rolled over to another order.",
+            question: "Can I request specific locations for my photoshoot?",
+            answer: "Absolutely! We are happy to shoot at your preferred location or suggest some great spots based on your style and vision.",
         },
         {
-            question: "Do you make large orders for events, birthday parties, or gatherings?",
-            answer: "Yes, we are happy to accommodate large orders for events, birthday parties, and gatherings. Depending on the size of the order, we may require a deposit of more than 50%.",
+            question: "How long does it take to receive the final photos?",
+            answer: "Delivery time depends on the type of session. Typically, edited photos are delivered within 1 to 2 weeks after the shoot.",
+        },
+        {
+            question: "What is your cancellation or rescheduling policy?",
+            answer: "Cancellations can be made up to 48 hours before the session, but the booking fee is non-refundable. Rescheduling is allowed based on availability.",
         }
     ];
 

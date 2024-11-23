@@ -20,12 +20,12 @@ const CalendarView = () => {
     const { events, status, error } = useSelector((state) => state.calendar);
     const [selectedEvent, setSelectedEvent] = useState(null);
 
-    //To handle responsive screens
+    // To handle responsive screens
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
                 import('./Calendar/mobileCa.css').then(() => {
-                    
+                    // Mobile styles loaded
                 });
             }
         };
@@ -37,7 +37,7 @@ const CalendarView = () => {
     // Fetch events when component mounts
     useEffect(() => {
         if (status === 'idle') {
-            dispatch(fetchCalendar())
+            dispatch(fetchCalendar());
         }
     }, [dispatch, status]);
 

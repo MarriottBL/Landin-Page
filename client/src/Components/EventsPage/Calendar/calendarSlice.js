@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { deleteCalendar, postCalendar, putCalendar } from '../../../Api/api';
+import { deleteCalendar, postCalendar, putCalendar, getCalendar } from '../../../Api/api';
 
 //*this page defines the state management for the calendar eventss to handle asynchronous operations from the API*//
 //it also contains the logic for managing calendar events using createSlice from Redux Toolkit.
@@ -7,10 +7,14 @@ import { deleteCalendar, postCalendar, putCalendar } from '../../../Api/api';
 
 //  API Requests
 export const fetchCalendar = createAsyncThunk('calendar/fetchCalendar', async () => {
-    const apiUrl = `${process.env.REACT_APP_API_URL}/api/calendar`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data;
+    // const apiUrl = `${process.env.REACT_APP_API_URL}/api/calendar`;
+    // const response = await fetch(apiUrl);
+    // const data = await response.json();
+    // return data;
+
+     // Use mock data for front-end only display
+        const response = await getCalendar();
+        return response.data;
 });
 
 export const addCalendar = createAsyncThunk('calendar/addCalendar', async (data) => {

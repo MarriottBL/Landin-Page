@@ -1,2 +1,2 @@
-# TBS
-Tropical Baking Sweets Online Landing Page
+# Versatile Landing Page Template
+

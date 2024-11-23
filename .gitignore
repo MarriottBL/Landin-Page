@@ -1,0 +1,17 @@
+# Ignore environment variables
+.env
+
+# Ignore node_modules folders in both client and server
+client/node_modules/
+server/node_modules/
+
+# Ignore logs
+logs
+*.log
+
+# Ignore local environment settings
+.vscode/
+.DS_Store
+
+# Ignore build files (if you're using something like React)
+
